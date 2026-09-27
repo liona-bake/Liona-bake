@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Liona.Bake — Tortas, Cookies, Matcha y Pan de Masa Madre</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-padding-top:env(safe-area-inset-top,0);-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:hidden;}
+body{margin:0;background:#faf7f2;color:#2a2520;overflow-x:hidden;max-width:100vw;min-height:100dvh;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:16px;line-height:1.5;}
+#root{overflow-x:hidden;max-width:100vw;}
+img{max-width:100%;height:auto;display:block;}
+svg{max-width:100%;display:inline-block;vertical-align:middle;}
+button{font-family:inherit;font-size:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0;}
+input,select,textarea{font-family:inherit;font-size:inherit;}
+h1,h2,h3,h4,h5,h6,p{margin:0;}
+ul{margin:0;padding:0;list-style:none;}
+::selection{background:#e8f0e5;color:#4a5c43;}
+.font-serif{font-family:Georgia,'Times New Roman',serif;}
+.font-sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;}
+.text-\[8px\]{font-size:8px;}
+.text-\[9px\]{font-size:9px;}
+.text-\[10px\]{font-size:10px;}
+.text-\[11px\]{font-size:11px;}
+.text-xs{font-size:.75rem;line-height:1rem;}
+.text-sm{font-size:.875rem;line-height:1.25rem;}
+.text-base{font-size:1rem;line-height:1.5rem;}
+.text-lg{font-size:1.125rem;line-height:1.75rem;}
+.text-xl{font-size:1.25rem;line-height:1.75rem;}
+.text-2xl{font-size:1.5rem;line-height:2rem;}
+.text-3xl{font-size:1.875rem;line-height:2.25rem;}
+.text-4xl{font-size:2.25rem;line-height:2.5rem;}
+.text-5xl{font-size:3rem;line-height:1.1;}
+.text-6xl{font-size:3.75rem;line-height:1.1;}
+.text-7xl{font-size:4.5rem;line-height:1.1;}
+.font-light{font-weight:300;}
+.font-normal{font-weight:400;}
+.font-medium{font-weight:500;}
+.font-semibold{font-weight:600;}
+.font-bold{font-weight:700;}
+.italic{font-style:italic;}
+.uppercase{text-transform:uppercase;}
+.tracking-wider{letter-spacing:.05em;}
+.tracking-widest{letter-spacing:.1em;}
+.tracking-\[0\.2em\]{letter-spacing:.2em;}
+.tracking-\[0\.25em\]{letter-spacing:.25em;}
+.tracking-\[0\.3em\]{letter-spacing:.3em;}
+.leading-none{line-height:1;}
+.leading-snug{line-height:1.375;}
+.leading-relaxed{line-height:1.625;}
+.text-center{text-align:center;}
+.text-left{text-align:left;}
+.text-right{text-align:right;}
+.line-clamp-1{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;}
+.line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.break-words{word-wrap:break-word;overflow-wrap:break-word;}
+.break-all{word-break:break-all;}
+.text-white{color:#fff;}
+.text-black{color:#000;}
+.text-\[\#2a2520\]{color:#2a2520;}
+.text-\[\#3a342e\]{color:#3a342e;}
+.text-\[\#555\]{color:#555;}
+.text-\[\#666\]{color:#666;}
+.text-\[\#777\]{color:#777;}
+.text-\[\#888\]{color:#888;}
+.text-\[\#999\]{color:#999;}
+.text-\[\#aaa\]{color:#aaa;}
+.text-\[\#ccc\]{color:#ccc;}
+.text-\[\#5d7355\]{color:#5d7355;}
+.text-\[\#8ba888\]{color:#8ba888;}
+.text-\[\#4a5c43\]{color:#4a5c43;}
+.text-\[\#b8956a\]{color:#b8956a;}
+.text-\[\#c9a86a\]{color:#c9a86a;}
+.text-\[\#e8f0e5\]{color:#e8f0e5;}
+.text-\[\#25D366\]{color:#25D366;}
+.text-\[\#f4f1ea\]{color:#f4f1ea;}
+.text-gray-200{color:#e5e7eb;}
+.text-emerald-800{color:#065f46;}
+.text-green-500{color:#22c55e;}
+.text-red-500{color:#ef4444;}
+.bg-white{background-color:#fff;}
+.bg-black{background-color:#000;}
+.bg-\[\#1c1c1c\]{background-color:#1c1c1c;}
+.bg-\[\#181818\]{background-color:#181818;}
+.bg-\[\#faf7f2\]{background-color:#faf7f2;}
+.bg-\[\#f0e9df\]{background-color:#f0e9df;}
+.bg-\[\#f4f1ea\]{background-color:#f4f1ea;}
+.bg-\[\#5d7355\]{background-color:#5d7355;}
+.bg-\[\#25D366\]{background-color:#25D366;}
+.bg-emerald-50{background-color:#ecfdf5;}
+.bg-green-500{background-color:#22c55e;}
+.flex{display:flex;}
+.inline-flex{display:inline-flex;}
+.hidden{display:none;}
+.block{display:block;}
+.flex-col{flex-direction:column;}
+.flex-row{flex-direction:row;}
+.flex-wrap{flex-wrap:wrap;}
+.flex-1{flex:1 1 0%;}
+.items-center{align-items:center;}
+.items-start{align-items:flex-start;}
+.items-stretch{align-items:stretch;}
+.justify-center{justify-content:center;}
+.justify-between{justify-content:space-between;}
+.justify-start{justify-content:flex-start;}
+.shrink-0{flex-shrink:0;}
+.self-start{align-self:flex-start;}
+.grid{display:grid;}
+.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr));}
+.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr));}
+.gap-1{gap:.25rem;}
+.gap-2{gap:.5rem;}
+.gap-3{gap:.75rem;}
+.gap-4{gap:1rem;}
+.gap-5{gap:1.25rem;}
+.gap-6{gap:1.5rem;}
+.gap-8{gap:2rem;}
+.gap-10{gap:2.5rem;}
+.gap-12{gap:3rem;}
+.gap-x-6{column-gap:1.5rem;}
+.gap-y-3{row-gap:.75rem;}
+.p-2{padding:.5rem;}
+.p-3{padding:.75rem;}
+.p-4{padding:1rem;}
+.p-5{padding:1.25rem;}
+.p-6{padding:1.5rem;}
+.p-8{padding:2rem;}
+.p-12{padding:3rem;}
+.p-14{padding:3.5rem;}
+.px-1{padding-left:.25rem;padding-right:.25rem;}
+.px-3{padding-left:.75rem;padding-right:.75rem;}
+.px-4{padding-left:1rem;padding-right:1rem;}
+.px-5{padding-left:1.25rem;padding-right:1.25rem;}
+.px-6{padding-left:1.5rem;padding-right:1.5rem;}
+.px-7{padding-left:1.75rem;padding-right:1.75rem;}
+.px-8{padding-left:2rem;padding-right:2rem;}
+.px-9{padding-left:2.25rem;padding-right:2.25rem;}
+.px-10{padding-left:2.5rem;padding-right:2.5rem;}
+.py-1{padding-top:.25rem;padding-bottom:.25rem;}
+.py-2{padding-top:.5rem;padding-bottom:.5rem;}
+.py-2\.5{padding-top:.625rem;padding-bottom:.625rem;}
+.py-3{padding-top:.75rem;padding-bottom:.75rem;}
+.py-3\.5{padding-top:.875rem;padding-bottom:.875rem;}
+.py-4{padding-top:1rem;padding-bottom:1rem;}
+.py-6{padding-top:1.5rem;padding-bottom:1.5rem;}
+.py-8{padding-top:2rem;padding-bottom:2rem;}
+.py-12{padding-top:3rem;padding-bottom:3rem;}
+.py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+.py-16{padding-top:4rem;padding-bottom:4rem;}
+.py-20{padding-top:5rem;padding-bottom:5rem;}
+.py-24{padding-top:6rem;padding-bottom:6rem;}
+.pt-2{padding-top:.5rem;}
+.pt-3{padding-top:.75rem;}
+.pt-4{padding-top:1rem;}
+.pt-5{padding-top:1.25rem;}
+.pt-6{padding-top:1.5rem;}
+.pt-8{padding-top:2rem;}
+.pt-10{padding-top:2.5rem;}
+.pt-12{padding-top:3rem;}
+.pt-16{padding-top:4rem;}
+.pt-20{padding-top:5rem;}
+.pb-1{padding-bottom:.25rem;}
+.pb-2{padding-bottom:.5rem;}
+.pb-5{padding-bottom:1.25rem;}
+.pb-6{padding-bottom:1.5rem;}
+.pb-10{padding-bottom:2.5rem;}
+.pb-12{padding-bottom:3rem;}
+.pb-16{padding-bottom:4rem;}
+.pl-10{padding-left:2.5rem;}
+.mt-0{margin-top:0;}
+.mt-0\.5{margin-top:.125rem;}
+.mt-1{margin-top:.25rem;}
+.mt-1\.5{margin-top:.375rem;}
+.mt-2{margin-top:.5rem;}
+.mt-3{margin-top:.75rem;}
+.mt-6{margin-top:1.5rem;}
+.mt-20{margin-top:5rem;}
+.mt-28{margin-top:7rem;}
+.mb-2{margin-bottom:.5rem;}
+.mb-6{margin-bottom:1.5rem;}
+.mb-8{margin-bottom:2rem;}
+.mb-10{margin-bottom:2.5rem;}
+.mb-12{margin-bottom:3rem;}
+.mb-16{margin-bottom:4rem;}
+.ml-1{margin-left:.25rem;}
+.-ml-1{margin-left:-.25rem;}
+.mx-auto{margin-left:auto;margin-right:auto;}
+.w-full{width:100%;}
+.w-1\/4{width:25%;}
+.w-2{width:.5rem;}
+.w-3{width:.75rem;}
+.w-4{width:1rem;}
+.w-5{width:1.25rem;}
+.w-6{width:1.5rem;}
+.w-7{width:1.75rem;}
+.w-8{width:2rem;}
+.w-14{width:3.5rem;}
+.w-16{width:4rem;}
+.w-20{width:5rem;}
+.h-full{height:100%;}
+.h-1\/4{height:25%;}
+.h-2{height:.5rem;}
+.h-3{height:.75rem;}
+.h-4{height:1rem;}
+.h-5{height:1.25rem;}
+.h-6{height:1.5rem;}
+.h-7{height:1.75rem;}
+.h-8{height:2rem;}
+.h-14{height:3.5rem;}
+.h-16{height:4rem;}
+.h-20{height:5rem;}
+.h-44{height:11rem;}
+.h-60{height:15rem;}
+.h-64{height:16rem;}
+.h-72{height:18rem;}
+.h-80{height:20rem;}
+.h-96{height:24rem;}
+.h-\[320px\]{height:320px;}
+.h-\[360px\]{height:360px;}
+.min-w-0{min-width:0;}
+.min-w-\[32px\]{min-width:32px;}
+.min-h-\[32px\]{min-height:32px;}
+.min-h-\[100dvh\]{min-height:100dvh;}
+.max-w-full{max-width:100%;}
+.max-w-md{max-width:28rem;}
+.max-w-xl{max-width:36rem;}
+.max-w-2xl{max-width:42rem;}
+.max-w-4xl{max-width:56rem;}
+.max-w-7xl{max-width:80rem;}
+.max-w-\[96px\]{max-width:96px;}
+.max-h-\[96px\]{max-height:96px;}
+.max-h-\[80dvh\]{max-height:80dvh;}
+.max-h-\[92dvh\]{max-height:92dvh;}
+.opacity-0{opacity:0;}
+.opacity-15{opacity:.15;}
+.opacity-25{opacity:.25;}
+.opacity-40{opacity:.4;}
+.opacity-70{opacity:.7;}
+.relative{position:relative;}
+.absolute{position:absolute;}
+.fixed{position:fixed;}
+.sticky{position:sticky;}
+.inset-0{top:0;right:0;bottom:0;left:0;}
+.inset-y-0{top:0;bottom:0;}
+.-inset-4{top:-1rem;right:-1rem;bottom:-1rem;left:-1rem;}
+.inset-x-3{left:.75rem;right:.75rem;}
+.inset-x-4{left:1rem;right:1rem;}
+.top-0{top:0;}
+.right-0{right:0;}
+.bottom-0{bottom:0;}
+.left-0{left:0;}
+.top-3{top:.75rem;}
+.top-4{top:1rem;}
+.bottom-3{bottom:.75rem;}
+.bottom-6{bottom:1.5rem;}
+.right-6{right:1.5rem;}
+.z-10{z-index:10;}
+.z-40{z-index:40;}
+.z-50{z-index:50;}
+.border{border:1px solid #e5e7eb;}
+.border-2{border-width:2px;border-style:solid;}
+.border-b{border-bottom:1px solid #e5e7eb;}
+.border-t{border-top:1px solid #e5e7eb;}
+.border-l{border-left:1px solid #e5e7eb;}
+.border-\[\#e5d9c9\]{border-color:#e5d9c9;}
+.border-\[\#e5d9c9\]\/60{border-color:rgba(229,217,201,.6);}
+.border-\[\#2a2a2a\]{border-color:#2a2a2a;}
+.border-\[\#c9b8a4\]{border-color:#c9b8a4;}
+.border-\[\#eae0d2\]{border-color:#eae0d2;}
+.border-\[\#1c1c1c\]{border-color:#1c1c1c;}
+.border-\[\#5d7355\]{border-color:#5d7355;}
+.border-white{border-color:#fff;}
+.border-transparent{border-color:transparent;}
+.border-emerald-200{border-color:#a7f3d0;}
+.rounded{border-radius:.25rem;}
+.rounded-lg{border-radius:.5rem;}
+.rounded-xl{border-radius:.75rem;}
+.rounded-2xl{border-radius:1rem;}
+.rounded-3xl{border-radius:1.5rem;}
+.rounded-full{border-radius:9999px;}
+.shadow-sm{box-shadow:0 1px 2px 0 rgba(0,0,0,.05);}
+.shadow-md{box-shadow:0 4px 6px -1px rgba(0,0,0,.1);}
+.shadow-lg{box-shadow:0 10px 15px -3px rgba(0,0,0,.1);}
+.shadow-xl{box-shadow:0 20px 25px -5px rgba(0,0,0,.1);}
+.shadow-2xl{box-shadow:0 25px 50px -12px rgba(0,0,0,.25);}
+.shadow-inner{box-shadow:inset 0 2px 4px 0 rgba(0,0,0,.06);}
+.backdrop-blur{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);}
+.backdrop-blur-sm{-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);}
+.backdrop-blur-md{-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);}
+.overflow-hidden{overflow:hidden;}
+.overflow-y-auto{overflow-y:auto;}
+.overflow-x-hidden{overflow-x:hidden;}
+.blur-md{filter:blur(12px);-webkit-filter:blur(12px);}
+.transition,.transition-all{transition:all .2s ease;}
+.transition-colors{transition:color .15s,background-color .15s,border-color .15s;}
+.transition-transform{transition:transform .3s ease;}
+.transition-opacity{transition:opacity .15s;}
+.duration-700{transition-duration:.7s;}
+.transform{transform:translateZ(0);}
+.rotate-2{transform:rotate(2deg);}
+.-rotate-1{transform:rotate(-1deg);}
+.hover\:bg-\[\#5d7355\]:hover{background-color:#5d7355;}
+.hover\:bg-\[\#4a5c43\]:hover{background-color:#4a5c43;}
+.hover\:bg-\[\#20ba5a\]:hover{background-color:#20ba5a;}
+.hover\:bg-\[\#1c1c1c\]:hover{background-color:#1c1c1c;}
+.hover\:bg-\[\#faf7f2\]:hover{background-color:#faf7f2;}
+.hover\:text-white:hover{color:#fff;}
+.hover\:text-\[\#5d7355\]:hover{color:#5d7355;}
+.hover\:text-\[\#2a2520\]:hover{color:#2a2520;}
+.hover\:text-red-500:hover{color:#ef4444;}
+.hover\:border-\[\#5d7355\]:hover{border-color:#5d7355;}
+.hover\:shadow-xl:hover{box-shadow:0 20px 25px -5px rgba(0,0,0,.1);}
+.hover\:shadow-2xl:hover{box-shadow:0 25px 50px -12px rgba(0,0,0,.25);}
+.hover\:scale-105:hover{transform:scale(1.05);}
+.hover\:scale-110:hover{transform:scale(1.1);}
+.hover\:-translate-y-0\.5:hover{transform:translateY(-2px);}
+.hover\:rotate-0:hover{transform:rotate(0deg);}
+.group:hover .group-hover\:scale-105{transform:scale(1.05);}
+.group:hover .group-hover\:scale-110{transform:scale(1.1);}
+.group:hover .group-hover\:opacity-100{opacity:1;}
+.group:hover .group-hover\:border-\[\#5d7355\]{border-color:#5d7355;}
+.cursor-pointer{cursor:pointer;}
+.cursor-not-allowed{cursor:not-allowed;}
+.outline-none{outline:none;}
+.focus\:border-\[\#5d7355\]:focus{border-color:#5d7355;}
+.bg-gradient-to-br{background-image:linear-gradient(to bottom right,#e8f0e5,#d9e6d3,#a3bd9b);}
+.bg-gradient-to-tr{background-image:linear-gradient(to top right,#e8f0e5,#f2f7ef);}
+.bg-gradient-to-t{background-image:linear-gradient(to top,rgba(0,0,0,.8),rgba(0,0,0,.3),transparent);}
+.bg-\[radial-gradient\(rgba\(255\,255\,255\,0\.9\)_1px\,transparent_1px\)\]{background-image:radial-gradient(rgba(255,255,255,.9) 1px,transparent 1px);}
+.bg-\[radial-gradient\(\#5d7355_1px\,transparent_1px\)\]{background-image:radial-gradient(#5d7355 1px,transparent 1px);}
+.\[background-size\:18px_18px\]{background-size:18px 18px;}
+.\[background-size\:20px_20px\]{background-size:20px 20px;}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.animate-fadeIn{animation:fadeIn .25s ease-out;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.animate-pulse{animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite;}
+@keyframes ping{75%,100%{transform:scale(2);opacity:0}}
+.animate-ping{animation:ping 1s cubic-bezier(0,0,.2,1) infinite;}
+.floating-wa{position:fixed;z-index:40;width:3rem;height:3rem;bottom:calc(1.25rem + env(safe-area-inset-bottom,0));right:calc(1.25rem + env(safe-area-inset-right,0));display:flex;align-items:center;justify-content:center;border-radius:9999px;background-color:#25D366;color:#fff;box-shadow:0 12px 28px -8px rgba(0,0,0,.35);transition:background-color .2s,transform .2s;-webkit-tap-highlight-color:transparent;}
+.floating-wa:hover{background-color:#20ba5a;transform:scale(1.05);}
+.floating-wa svg{width:1.5rem;height:1.5rem;}
+.topbar-icon{width:1rem;height:1rem;flex-shrink:0;}
+@media(min-width:640px){
+.sm\:hidden{display:none;}
+.sm\:inline{display:inline;}
+.sm\:inline-flex{display:inline-flex;}
+.sm\:flex-row{flex-direction:row;}
+.sm\:items-center{align-items:center;}
+.sm\:items-stretch{align-items:stretch;}
+.sm\:text-left{text-align:left;}
+.sm\:text-right{text-align:right;}
+.sm\:text-xs{font-size:.75rem;line-height:1rem;}
+.sm\:text-sm{font-size:.875rem;line-height:1.25rem;}
+.sm\:text-base{font-size:1rem;line-height:1.5rem;}
+.sm\:text-lg{font-size:1.125rem;line-height:1.75rem;}
+.sm\:text-xl{font-size:1.25rem;line-height:1.75rem;}
+.sm\:text-2xl{font-size:1.5rem;line-height:2rem;}
+.sm\:text-3xl{font-size:1.875rem;line-height:2.25rem;}
+.sm\:text-4xl{font-size:2.25rem;line-height:2.5rem;}
+.sm\:text-5xl{font-size:3rem;line-height:1.1;}
+.sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr));}
+.sm\:gap-2{gap:.5rem;}
+.sm\:gap-3{gap:.75rem;}
+.sm\:gap-4{gap:1rem;}
+.sm\:gap-5{gap:1.25rem;}
+.sm\:gap-6{gap:1.5rem;}
+.sm\:gap-8{gap:2rem;}
+.sm\:gap-12{gap:3rem;}
+.sm\:p-4{padding:1rem;}
+.sm\:p-5{padding:1.25rem;}
+.sm\:p-6{padding:1.5rem;}
+.sm\:p-8{padding:2rem;}
+.sm\:p-12{padding:3rem;}
+.sm\:p-14{padding:3.5rem;}
+.sm\:px-4{padding-left:1rem;padding-right:1rem;}
+.sm\:px-5{padding-left:1.25rem;padding-right:1.25rem;}
+.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem;}
+.sm\:px-8{padding-left:2rem;padding-right:2rem;}
+.sm\:px-9{padding-left:2.25rem;padding-right:2.25rem;}
+.sm\:px-10{padding-left:2.5rem;padding-right:2.5rem;}
+.sm\:py-3{padding-top:.75rem;padding-bottom:.75rem;}
+.sm\:py-3\.5{padding-top:.875rem;padding-bottom:.875rem;}
+.sm\:py-4{padding-top:1rem;padding-bottom:1rem;}
+.sm\:py-20{padding-top:5rem;padding-bottom:5rem;}
+.sm\:pt-6{padding-top:1.5rem;}
+.sm\:pt-8{padding-top:2rem;}
+.sm\:pt-12{padding-top:3rem;}
+.sm\:pb-6{padding-bottom:1.5rem;}
+.sm\:pb-12{padding-bottom:3rem;}
+.sm\:pb-16{padding-bottom:4rem;}
+.sm\:mt-0{margin-top:0;}
+.sm\:mt-2{margin-top:.5rem;}
+.sm\:mt-16{margin-top:4rem;}
+.sm\:mt-28{margin-top:7rem;}
+.sm\:mb-8{margin-bottom:2rem;}
+.sm\:mb-12{margin-bottom:3rem;}
+.sm\:mb-16{margin-bottom:4rem;}
+.sm\:h-20{height:5rem;}
+.sm\:h-64{height:16rem;}
+.sm\:h-72{height:18rem;}
+.sm\:h-80{height:20rem;}
+.sm\:h-96{height:24rem;}
+.sm\:w-20{width:5rem;}
+.sm\:h-\[420px\]{height:420px;}
+.sm\:h-\[450px\]{height:450px;}
+.sm\:h-\[480px\]{height:480px;}
+.sm\:h-\[500px\]{height:500px;}
+.sm\:rounded-3xl{border-radius:1.5rem;}
+.sm\:self-auto{align-self:auto;}
+.sm\:text-\[9px\]{font-size:9px;}
+.sm\:leading-snug{line-height:1.375;}
+}
+@media(min-width:768px){
+.md\:flex{display:flex;}
+.md\:hidden{display:none;}
+.md\:text-left{text-align:left;}
+.md\:flex-row{flex-direction:row;}
+.md\:items-end{align-items:flex-end;}
+.md\:self-auto{align-self:auto;}
+.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr));}
+.md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+.md\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr));}
+.md\:h-72{height:18rem;}
+}
+@media(min-width:1024px){
+.lg\:inline{display:inline;}
+.lg\:justify-start{justify-content:flex-start;}
+.lg\:text-left{text-align:left;}
+.lg\:text-5xl{font-size:3rem;line-height:1.1;}
+.lg\:text-6xl{font-size:3.75rem;line-height:1.1;}
+.lg\:text-7xl{font-size:4.5rem;line-height:1.1;}
+.lg\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+.lg\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr));}
+.lg\:grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr));}
+.lg\:col-span-5{grid-column:span 5/span 5;}
+.lg\:col-span-6{grid-column:span 6/span 6;}
+.lg\:col-span-7{grid-column:span 7/span 7;}
+.lg\:gap-12{gap:3rem;}
+.lg\:px-5{padding-left:1.25rem;padding-right:1.25rem;}
+.lg\:px-8{padding-left:2rem;padding-right:2rem;}
+.lg\:py-24{padding-top:6rem;padding-bottom:6rem;}
+.lg\:py-36{padding-top:9rem;padding-bottom:9rem;}
+.lg\:mx-0{margin-left:0;margin-right:0;}
+.lg\:h-\[500px\]{height:500px;}
+.lg\:h-\[600px\]{height:600px;}
+.lg\:max-w-none{max-width:none;}
+.lg\:h-80{height:20rem;}
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<noscript><div style="padding:40px;text-align:center;font-family:sans-serif;color:#2a2520">Esta página necesita JavaScript activado para funcionar.</div></noscript>
+<script>
+setTimeout(function(){
+  var root=document.getElementById('root');
+  if(root&&root.children.length===0){
+    root.innerHTML='<div style="min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font-family:Georgia,serif;background:#faf7f2;color:#2a2520;"><div style="max-width:420px;"><h2 style="font-weight:400;margin:0 0 12px;font-size:22px;">No se pudo cargar la página</h2><p style="font-size:14px;color:#666;margin:0 0 24px;line-height:1.5;">Revisa tu conexión e intenta de nuevo. Si persiste, escríbenos por WhatsApp.</p><button onclick="window.location.reload()" style="background:#2a2520;color:#fff;border:none;padding:14px 28px;border-radius:999px;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin:0 8px 8px 0;cursor:pointer;">Reintentar</button><a href="https://wa.me/573043915423" style="display:inline-block;background:#25D366;color:#fff;padding:14px 28px;border-radius:999px;font-size:12px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;">WhatsApp</a></div></div>';
+  }
+},6000);
+</script>
+<script>
+var __defProp=Object.defineProperty;
+var __defNormalProp=(obj,key,value)=>key in obj?__defProp(obj,key,{enumerable:true,configurable:true,writable:true,value}):obj[key]=value;
+var __publicField=(obj,key,value)=>__defNormalProp(obj,typeof key!=="symbol"?key+"":key,value);
+const { useState, useEffect, Component }=React;
+const CONFIG={
+  BUSINESS_NAME:"Liona.Bake",
+  TAGLINE:"Horneado saludable, sabor que cuida. 🌿",
+  WHATSAPP_NUMBER:"573043915423",
+  WHATSAPP_DISPLAY:"+57 (304) 391-5423",
+  INSTAGRAM_URL:"https://instagram.com/liona.bake",
+  INSTAGRAM_HANDLE:"@liona.bake",
+  TIKTOK_URL:"https://tiktok.com/@liona.bake",
+  TIKTOK_HANDLE:"@liona.bake",
+  EMAIL:"lioona.col@gmail.com",
+  BUSINESS_HOURS:"Lun a Sáb · 8:00 a. m. - 6:00 p. m.",
+  CITY:"Colombia",
+  DELIVERY_AREA:"Coordinamos entregas en toda Colombia por WhatsApp. También recogida local con cita previa.",
+  DELIVERY_NOTE:"Envíos y entregas coordinadas por WhatsApp según tu ciudad.",
+  HERO_IMAGE:"https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=900",
+  ABOUT_IMAGE:"https://images.unsplash.com/photo-1556217477-d325251ece38?auto=format&fit=crop&q=80&w=900",
+  CATEGORY_IMAGES:{
+    tortas:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&q=80&w=900",
+    cookies:"https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&q=80&w=900",
+    matcha:"https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&q=80&w=900",
+    pan:"https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=900"
+  },
+  INSTAGRAM_IMAGES:[
+    "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&q=80&w=700",
+    "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&q=80&w=700",
+    "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&q=80&w=700",
+    "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=700"
+  ]
+};
+const sanitizeInput=(str)=>{
+  if(typeof str!=="string") return "";
+  return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;").trim();
+};
+const INITIAL_PRODUCTS=[
+  { id:"torta-zanahoria", name:"Torta de Zanahoria & Nuez", category:"tortas", price:45e3, formattedPrice:"$45.000", image:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&q=80&w=900", description:"Torta húmeda endulzada con dátiles y panela. Sin azúcar refinada, sin harinas blancas. Con nueces y especias naturales.", badge:"Más Vendida", featured:true, variants:{ colors:["Clásica","Sin Frutos Secos","Con Cobertura de Cacao"], sizes:["Personal (4 porciones)","Mediana (8 porciones)","Grande (12 porciones)"], presentations:["Caja Kraft","Caja Regalo con Lazo"] } },
+  { id:"torta-chocolate", name:"Torta de Chocolate & Dátiles", category:"tortas", price:50e3, formattedPrice:"$50.000", image:"https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&q=80&w=900", description:"Intenso cacao orgánico endulzado con dátiles medjool. Textura suave y profunda, apta para veganos.", badge:"Vegana", featured:true, variants:{ colors:["Chocolate Intenso","Chocolate & Coco"], sizes:["Personal (4 porciones)","Mediana (8 porciones)","Grande (12 porciones)"], presentations:["Caja Kraft","Caja Regalo con Lazo"] } },
+  { id:"cookies-avena", name:"Cookies de Avena & Arándanos", category:"cookies", price:25e3, formattedPrice:"$25.000", image:"https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&q=80&w=900", description:"Avena integral, arándanos deshidratados y un toque de canela. Crujientes por fuera, tiernas por dentro.", badge:"Sin Azúcar", featured:true, variants:{ colors:["Clásicas","Con Chocolate 70%","Con Nueces"], sizes:["6 unidades","12 unidades","18 unidades"], presentations:["Bolsa Kraft","Caja Regalo"] } },
+  { id:"cookies-almendra", name:"Cookies de Almendra & Coco", category:"cookies", price:28e3, formattedPrice:"$28.000", image:"https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&q=80&w=900", description:"Harina de almendra, coco rallado y endulzante natural. Apta para keto y sin gluten.", badge:"Sin Gluten", featured:true, variants:{ colors:["Clásicas","Con Cacao Nibs"], sizes:["6 unidades","12 unidades","18 unidades"], presentations:["Bolsa Kraft","Caja Regalo"] } },
+  { id:"matcha-ceremonial", name:"Matcha Ceremonial Grado A", category:"matcha", price:85e3, formattedPrice:"$85.000", image:"https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&q=80&w=900", description:"Matcha japonés 100% ceremonial, cosecha sombreada. Sabor umami profundo, color verde vibrante.", badge:"Importado", featured:true, variants:{ colors:["Ceremonial Clásico","Ceremonial Premium"], sizes:["30 g","60 g","100 g"], presentations:["Lata Sellada","Sobre de Bambú"] } },
+  { id:"matcha-latte", name:"Matcha Latte Mix", category:"matcha", price:55e3, formattedPrice:"$55.000", image:"https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&q=80&w=900", description:"Mezcla lista para preparar en segundos: matcha, leche de coco en polvo y endulzante natural.", badge:"Práctico", featured:false, variants:{ colors:["Original","Vainilla"], sizes:["150 g (aprox. 15 tazas)","250 g (aprox. 25 tazas)"], presentations:["Frasco de Vidrio","Bolsa Resellable"] } },
+  { id:"pan-clasico", name:"Pan de Masa Madre Clásico", category:"pan", price:18e3, formattedPrice:"$18.000", image:"https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=900", description:"Fermentación lenta de 24 horas con masa madre viva. Corteza crujiente, miga alveolada y suave.", badge:"Artesanal", featured:true, variants:{ colors:["Harina Integral","Harina Blanca","Mezcla 50/50"], sizes:["500 g","900 g"], presentations:["Bolsa de Papel","Bolsa Reutilizable"] } },
+  { id:"pan-semillas", name:"Pan de Masa Madre con Semillas", category:"pan", price:22e3, formattedPrice:"$22.000", image:"https://images.unsplash.com/photo-1585478259715-11e4b4c1c9e5?auto=format&fit=crop&q=80&w=900", description:"Masa madre clásica con semillas de girasol, calabaza, lino y sésamo. Nutritivo y saciante.", badge:"Nutritivo", featured:false, variants:{ colors:["Mezcla de Semillas","Solo Girasol"], sizes:["500 g","900 g"], presentations:["Bolsa de Papel","Bolsa Reutilizable"] } }
+];
+const Icon=({ name, className="w-5 h-5" })=>{
+  const common={ width:24, height:24, className:`shrink-0 ${className}`, "aria-hidden":"true", focusable:"false" };
+  switch(name){
+    case "search": return React.createElement("svg",{...common,fill:"none",stroke:"currentColor",viewBox:"0 0 24 24"},React.createElement("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"1.5",d:"M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"}));
+    case "shopping-bag": return React.createElement("svg",{...common,fill:"none",stroke:"currentColor",viewBox:"0 0 24 24"},React.createElement("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"1.5",d:"M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"}));
+    case "whatsapp": return React.createElement("svg",{...common,fill:"currentColor",viewBox:"0 0 24 24"},React.createElement("path",{d:"M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.198-.198.347-.767.966-.94 1.164-.173.199-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"}));
+    case "menu": return React.createElement("svg",{...common,fill:"none",stroke:"currentColor",viewBox:"0 0 24 24"},React.createElement("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"1.5",d:"M4 6h16M4 12h16M4 18h16"}));
+    case "close": return React.createElement("svg",{...common,fill:"none",stroke:"currentColor",viewBox:"0 0 24 24"},React.createElement("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"1.5",d:"M6 18L18 6M6 6l12 12"}));
+    case "trash": return React.createElement("svg",{...common,fill:"none",stroke:"currentColor",viewBox:"0 0 24 24"},React.createElement("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"1.5",d:"M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"}));
+    case "heart": return React.createElement("svg",{...common,fill:"currentColor",viewBox:"0 0 24 24"},React.createElement("path",{d:"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"}));
+    case "map-pin": return React.createElement("svg",{...common,fill:"none",stroke:"currentColor",viewBox:"0 0 24 24"},React.createElement("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"1.5",d:"M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"}),React.createElement("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"1.5",d:"M15 11a3 3 0 11-6 0 3 3 0 016 0z"}));
+    case "clock": return React.createElement("svg",{...common,fill:"none",stroke:"currentColor",viewBox:"0 0 24 24"},React.createElement("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"1.5",d:"M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"}));
+    case "shield": return React.createElement("svg",{...common,fill:"none",stroke:"currentColor",viewBox:"0 0 24 24"},React.createElement("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"1.5",d:"M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"}));
+    case "truck": return React.createElement("svg",{...common,fill:"none",stroke:"currentColor",viewBox:"0 0 24 24"},React.createElement("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"1.5",d:"M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"}),React.createElement("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"1.5",d:"M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"}));
+    case "arrow-right": return React.createElement("svg",{...common,fill:"none",stroke:"currentColor",viewBox:"0 0 24 24"},React.createElement("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"1.5",d:"M14 5l7 7m0 0l-7 7m7-7H3"}));
+    case "star": return React.createElement("svg",{...common,fill:"currentColor",viewBox:"0 0 24 24"},React.createElement("path",{d:"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"}));
+    case "cake": return React.createElement("svg",{...common,fill:"none",stroke:"currentColor",viewBox:"0 0 24 24"},React.createElement("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"1.5",d:"M4 20h16v-6a4 4 0 00-4-4H8a4 4 0 00-4 4v6z"}),React.createElement("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"1.5",d:"M4 15h16"}),React.createElement("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"1.5",d:"M12 10V5"}),React.createElement("circle",{cx:"12",cy:"4",r:"1",fill:"currentColor",stroke:"none"}));
+    case "cookie": return React.createElement("svg",{...common,fill:"none",stroke:"currentColor",viewBox:"0 0 24 24"},React.createElement("circle",{cx:"12",cy:"12",r:"9",strokeWidth:"1.5"}),React.createElement("circle",{cx:"9",cy:"9",r:"1",fill:"currentColor",stroke:"none"}),React.createElement("circle",{cx:"15",cy:"12",r:"1",fill:"currentColor",stroke:"none"}),React.createElement("circle",{cx:"10",cy:"15",r:"1",fill:"currentColor",stroke:"none"}),React.createElement("circle",{cx:"15",cy:"7",r:"1",fill:"currentColor",stroke:"none"}));
+    case "leaf": return React.createElement("svg",{...common,fill:"none",stroke:"currentColor",viewBox:"0 0 24 24"},React.createElement("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"1.5",d:"M12 22c0-8 4-14 10-16-2 8-6 14-10 16z"}),React.createElement("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"1.5",d:"M12 22c0-8-4-14-10-16 2 8 6 14 10 16z"}),React.createElement("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"1.5",d:"M12 22V8"}));
+    case "bread": return React.createElement("svg",{...common,fill:"none",stroke:"currentColor",viewBox:"0 0 24 24"},React.createElement("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"1.5",d:"M4 12c0-3 3-6 8-6s8 3 8 6v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6z"}),React.createElement("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:"1.5",d:"M9 10V8M12 9V7M15 10V8"}));
+    default: return null;
+  }
+};
+const VISUAL_PALETTES={
+  tortas:"from-[#f3e4c8] via-[#e8c8a0] to-[#b8956a]",
+  cookies:"from-[#e8d5b7] via-[#d4b183] to-[#8b6f47]",
+  matcha:"from-[#e8f0e5] via-[#d9e6d3] to-[#5d7355]",
+  pan:"from-[#f0e0c8] via-[#d9b88a] to-[#8b6f47]"
+};
+const VISUAL_ICONS={ tortas:"cake", cookies:"cookie", matcha:"leaf", pan:"bread" };
+const ProductVisual=({ category="tortas", className="" })=>React.createElement("div",{className:`relative flex items-center justify-center overflow-hidden bg-gradient-to-br ${className}`},React.createElement("div",{className:"absolute inset-0 opacity-25 bg-[radial-gradient(rgba(255,255,255,0.9)_1px,transparent_1px)] [background-size:18px_18px]"}),React.createElement(Icon,{name:VISUAL_ICONS[category]||"cake",className:"relative w-1/4 h-1/4 min-w-[32px] min-h-[32px] max-w-[96px] max-h-[96px] text-white drop-shadow-md"}));
+const ProductImage=({ src, category, alt="", className="" })=>{
+  const [failed,setFailed]=useState(false);
+  if(!src||failed) return React.createElement(ProductVisual,{category,className});
+  return React.createElement("img",{src,alt,loading:"lazy",decoding:"async",className:`${className} object-cover`,onError:()=>setFailed(true)});
+};
+class ErrorBoundary extends Component{
+  constructor(){ super(...arguments); __publicField(this,"state",{hasError:false}); }
+  static getDerivedStateFromError(){ return {hasError:true}; }
+  componentDidCatch(error,info){ console.error("ErrorBoundary:",error,info); }
+  render(){
+    if(this.state.hasError){
+      return React.createElement("div",{className:"min-h-[100dvh] flex items-center justify-center bg-[#faf7f2] p-6 text-center"},React.createElement("div",{className:"max-w-md bg-white p-8 rounded-3xl border border-[#e5d9c9] shadow-xl"},React.createElement("h2",{className:"font-serif text-2xl text-[#2a2520] mb-3"},"Algo salió mal"),React.createElement("p",{className:"text-sm text-[#666] mb-6"},"Hemos encontrado un inconveniente temporal. Recarga la página."),React.createElement("button",{onClick:()=>window.location.reload(),className:"bg-[#2a2520] text-white px-8 py-3 rounded-full text-xs uppercase tracking-widest"},"Recargar Sitio")));
+    }
+    return this.props.children;
+  }
+}
+function App(){
+  var _a,_b,_c;
+  const [activeTab,setActiveTab]=useState("home");
+  const [selectedCategory,setSelectedCategory]=useState("all");
+  const [searchQuery,setSearchQuery]=useState("");
+  const [isSearchOpen,setIsSearchOpen]=useState(false);
+  const [isMobileMenuOpen,setIsMobileMenuOpen]=useState(false);
+  const [currentProduct,setCurrentProduct]=useState(INITIAL_PRODUCTS[0]);
+  const [selectedColor,setSelectedColor]=useState("");
+  const [selectedSize,setSelectedSize]=useState("");
+  const [selectedPresentation,setSelectedPresentation]=useState("");
+  const [productQuantity,setProductQuantity]=useState(1);
+  const [customMessage,setCustomMessage]=useState("");
+  const [recipientName,setRecipientName]=useState("");
+  const [selectedOccasion,setSelectedOccasion]=useState("Cumpleaños");
+  const [reviews,setReviews]=useState(()=>{ try{ const s=localStorage.getItem("liona_reviews"); return s?JSON.parse(s):[]; }catch(e){ return []; } });
+  const [newReviewName,setNewReviewName]=useState("");
+  const [newReviewComment,setNewReviewComment]=useState("");
+  const [newReviewRating,setNewReviewRating]=useState(5);
+  const [reviewSuccessMessage,setReviewSuccessMessage]=useState(false);
+  const [cart,setCart]=useState(()=>{ try{ const s=localStorage.getItem("liona_cart"); return s?JSON.parse(s):[]; }catch(e){ return []; } });
+  const [isCartOpen,setIsCartOpen]=useState(false);
+  const [isCheckoutOpen,setIsCheckoutOpen]=useState(false);
+  const [checkoutForm,setCheckoutForm]=useState({ fullName:"", whatsapp:"", address:"", neighborhood:"", reference:"", deliveryDate:"", timeSlot:"Mañana (9:00 a.m. - 1:00 p.m.)", note:"", paymentMethod:"Nequi / Transferencia" });
+  useEffect(()=>{
+    const anyOpen=isCartOpen||isCheckoutOpen||isMobileMenuOpen;
+    if(anyOpen){ const prev=document.body.style.overflow; document.body.style.overflow="hidden"; return ()=>{ document.body.style.overflow=prev; }; }
+  },[isCartOpen,isCheckoutOpen,isMobileMenuOpen]);
+  useEffect(()=>{ try{ localStorage.setItem("liona_cart",JSON.stringify(cart)); }catch(e){} },[cart]);
+  useEffect(()=>{ try{ localStorage.setItem("liona_reviews",JSON.stringify(reviews)); }catch(e){} },[reviews]);
+  useEffect(()=>{
+    var _a2,_b2,_c2;
+    if(currentProduct&&currentProduct.variants){
+      setSelectedColor(((_a2=currentProduct.variants.colors)==null?void 0:_a2[0])||"");
+      setSelectedSize(((_b2=currentProduct.variants.sizes)==null?void 0:_b2[0])||"");
+      setSelectedPresentation(((_c2=currentProduct.variants.presentations)==null?void 0:_c2[0])||"");
+    }
+    setProductQuantity(1); setRecipientName(""); setCustomMessage(""); setSelectedOccasion("Cumpleaños");
+  },[currentProduct]);
+  const cartSubtotal=cart.reduce((sum,i)=>sum+i.price*i.quantity,0);
+  const shippingTotal=0;
+  const cartTotal=cartSubtotal+shippingTotal;
+  const totalCartCount=cart.reduce((sum,i)=>sum+i.quantity,0);
+  const addToCart=(product,quantity=1,options={})=>{
+    const newItem={ cartId:`${product.id}-${options.color||selectedColor||"def"}-${options.size||selectedSize||"def"}-${options.presentation||selectedPresentation||"def"}-${Date.now()}`, productId:sanitizeInput(product.id), name:sanitizeInput(product.name), price:product.price, formattedPrice:product.formattedPrice, category:sanitizeInput(product.category), image:product.image, quantity, color:sanitizeInput(options.color||selectedColor), size:sanitizeInput(options.size||selectedSize), presentation:sanitizeInput(options.presentation||selectedPresentation), recipientName:sanitizeInput(options.recipientName||recipientName), customMessage:sanitizeInput(options.customMessage||customMessage), occasion:sanitizeInput(options.occasion||selectedOccasion) };
+    setCart((prev)=>[...prev,newItem]); setIsCartOpen(true);
+  };
+  const removeFromCart=(id)=>setCart((p)=>p.filter((i)=>i.cartId!==id));
+  const updateCartQuantity=(id,delta)=>setCart((prev)=>prev.map((i)=>{ if(i.cartId===id){ const n=i.quantity+delta; return n>0?{...i,quantity:n}:null; } return i; }).filter(Boolean));
+  const handleAddReview=(e)=>{ e.preventDefault(); const cn=sanitizeInput(newReviewName); const cc=sanitizeInput(newReviewComment); if(!cn||!cc) return; setReviews([{ id:Date.now(), name:cn, comment:cc, rating:Number(newReviewRating), date:"Hace un momento" },...reviews]); setNewReviewName(""); setNewReviewComment(""); setReviewSuccessMessage(true); setTimeout(()=>setReviewSuccessMessage(false),4e3); };
+  const handleWhatsAppCheckout=(e)=>{
+    if(e) e.preventDefault();
+    const itemsText=cart.map((i)=>`• ${i.name} (Cant: ${i.quantity}) - ${i.formattedPrice}\n  Opción: ${i.color||"N/A"} | Tamaño: ${i.size||"N/A"} | Presentación: ${i.presentation||"N/A"}${i.recipientName?`\n  Para: ${i.recipientName} (${i.occasion})\n  Mensaje: "${i.customMessage}"`:""}`).join("\n\n");
+    const f=checkoutForm;
+    const message=`Hola ${CONFIG.BUSINESS_NAME}, quiero hacer el siguiente pedido:\n\n*PRODUCTOS:*\n${itemsText}\n\n*Subtotal:* $${cartSubtotal.toLocaleString()}\n*Envío:* A coordinar\n*TOTAL:* $${cartTotal.toLocaleString()}\n\n*DATOS DE ENTREGA:*\n• Nombre: ${sanitizeInput(f.fullName)||"No especificado"}\n• WhatsApp: ${sanitizeInput(f.whatsapp)||"No especificado"}\n• Dirección: ${sanitizeInput(f.address)||"No especificado"}\n• Barrio/Ciudad: ${sanitizeInput(f.neighborhood)||"No especificado"}\n• Referencia: ${sanitizeInput(f.reference)||"N/A"}\n• Fecha: ${sanitizeInput(f.deliveryDate)||"A coordinar"}\n• Franja: ${sanitizeInput(f.timeSlot)}\n• Pago: ${sanitizeInput(f.paymentMethod)}${f.note?`\n• Nota: ${sanitizeInput(f.note)}`:""}\n\nGracias.`;
+    window.open(`https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,"_blank");
+  };
+  const handleBuyNowDirect=(product)=>{
+    const message=`Hola ${CONFIG.BUSINESS_NAME}, quiero comprar directamente:\n\n• ${product.name} (Cant: ${productQuantity}) - ${product.formattedPrice}\n  Opción: ${selectedColor||"N/A"} | Tamaño: ${selectedSize||"N/A"} | Presentación: ${selectedPresentation||"N/A"}${recipientName?`\n  Para: ${recipientName} (${selectedOccasion})\n  Mensaje: "${customMessage}"`:""}\n\n¿Me confirman disponibilidad?`;
+    window.open(`https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,"_blank");
+  };
+  const filteredProducts=INITIAL_PRODUCTS.filter((p)=>(selectedCategory==="all"||p.category===selectedCategory)&&(p.name.toLowerCase().includes(searchQuery.toLowerCase())||p.description.toLowerCase().includes(searchQuery.toLowerCase())));
+  return React.createElement("div",{className:"min-h-[100dvh] bg-[#faf7f2] text-[#2a2520] font-sans antialiased overflow-x-hidden w-full max-w-full"},
+    React.createElement("div",{className:"bg-[#2a2520] text-[#f4f1ea] text-[10px] sm:text-xs py-2 px-3 text-center tracking-widest font-light flex flex-wrap items-center justify-center gap-2",style:{paddingTop:"max(0.5rem, env(safe-area-inset-top, 0px))"}},
+      React.createElement(Icon,{name:"leaf",className:"topbar-icon text-[#c9a86a]"}),
+      React.createElement("span",{className:"leading-snug break-words"},"Horneado saludable, sin azúcar refinada "," 🌿",React.createElement("span",{className:"hidden md:inline"}," ",CONFIG.TAGLINE))
+    ),
+    React.createElement("header",{className:"sticky top-0 z-40 bg-[#faf7f2] border-b border-[#e5d9c9] transition-all",style:{top:"env(safe-area-inset-top, 0px)"}},
+      React.createElement("div",{className:"max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2"},
+        React.createElement("button",{onClick:()=>setIsMobileMenuOpen(!isMobileMenuOpen),className:"md:hidden p-2 -ml-1 text-[#2a2520] hover:text-[#5d7355] transition-colors","aria-label":"Abrir menú"},React.createElement(Icon,{name:isMobileMenuOpen?"close":"menu",className:"w-6 h-6"})),
+        React.createElement("div",{onClick:()=>setActiveTab("home"),className:"cursor-pointer text-center md:text-left min-w-0"},
+          React.createElement("h1",{className:"font-serif text-xl sm:text-3xl tracking-wider font-normal text-[#2a2520] leading-none"},"Liona",React.createElement("span",{className:"text-[#5d7355] font-light"},".Bake")),
+          React.createElement("p",{className:"text-[8px] sm:text-[9px] tracking-[0.3em] uppercase text-[#4a5c43] font-medium mt-0.5"},"Saludable & Artesanal")
+        ),
+        React.createElement("nav",{className:"hidden md:flex items-center space-x-8 text-xs font-medium tracking-[0.2em] uppercase text-[#3a342e]"},
+          React.createElement("button",{onClick:()=>setActiveTab("home"),className:`transition-colors hover:text-[#5d7355] pb-1 border-b-2 ${activeTab==="home"?"border-[#5d7355] text-[#5d7355]":"border-transparent"}`},"Inicio"),
+          React.createElement("button",{onClick:()=>{setActiveTab("catalog");setSelectedCategory("tortas");},className:`transition-colors hover:text-[#5d7355] pb-1 border-b-2 ${activeTab==="catalog"&&selectedCategory==="tortas"?"border-[#5d7355] text-[#5d7355]":"border-transparent"}`},"Tortas"),
+          React.createElement("button",{onClick:()=>{setActiveTab("catalog");setSelectedCategory("cookies");},className:`transition-colors hover:text-[#5d7355] pb-1 border-b-2 ${activeTab==="catalog"&&selectedCategory==="cookies"?"border-[#5d7355] text-[#5d7355]":"border-transparent"}`},"Cookies"),
+          React.createElement("button",{onClick:()=>{setActiveTab("catalog");setSelectedCategory("matcha");},className:`transition-colors hover:text-[#5d7355] pb-1 border-b-2 ${activeTab==="catalog"&&selectedCategory==="matcha"?"border-[#5d7355] text-[#5d7355]":"border-transparent"}`},"Matcha"),
+          React.createElement("button",{onClick:()=>{setActiveTab("catalog");setSelectedCategory("pan");},className:`transition-colors hover:text-[#5d7355] pb-1 border-b-2 ${activeTab==="catalog"&&selectedCategory==="pan"?"border-[#5d7355] text-[#5d7355]":"border-transparent"}`},"Pan"),
+          React.createElement("button",{onClick:()=>setActiveTab("about"),className:`transition-colors hover:text-[#5d7355] pb-1 border-b-2 ${activeTab==="about"?"border-[#5d7355] text-[#5d7355]":"border-transparent"}`},"Nosotros"),
+          React.createElement("button",{onClick:()=>setActiveTab("shipping"),className:`transition-colors hover:text-[#5d7355] pb-1 border-b-2 ${activeTab==="shipping"?"border-[#5d7355] text-[#5d7355]":"border-transparent"}`},"Contacto")
+        ),
+        React.createElement("div",{className:"flex items-center space-x-1 sm:space-x-3"},
+          React.createElement("button",{onClick:()=>setIsSearchOpen(!isSearchOpen),className:"p-2 text-[#2a2520] hover:text-[#5d7355] transition-colors","aria-label":"Buscar"},React.createElement(Icon,{name:"search",className:"w-5 h-5"})),
+          React.createElement("button",{onClick:()=>setIsCartOpen(true),className:"relative p-2 text-[#2a2520] hover:text-[#5d7355] transition-colors","aria-label":"Carrito"},
+            React.createElement(Icon,{name:"shopping-bag",className:"w-6 h-6"}),
+            totalCartCount>0&&React.createElement("span",{className:"absolute top-0 right-0 bg-[#5d7355] text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-sm"},totalCartCount)
+          ),
+          React.createElement("a",{href:`https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=Hola%20${CONFIG.BUSINESS_NAME},%20quiero%20consultar`,target:"_blank",rel:"noopener noreferrer",className:"hidden sm:inline-flex items-center gap-2 bg-[#2a2520] hover:bg-[#5d7355] text-white px-4 lg:px-5 py-2.5 rounded-full text-xs font-medium tracking-widest uppercase shadow-sm transition-all"},
+            React.createElement(Icon,{name:"whatsapp",className:"w-4 h-4 text-[#25D366]"}),React.createElement("span",{className:"hidden lg:inline"},"WhatsApp")
+          )
+        )
+      ),
+      isSearchOpen&&React.createElement("div",{className:"bg-[#f0e9df] border-b border-[#e5d9c9] py-3 px-3 sm:px-4 animate-fadeIn"},
+        React.createElement("div",{className:"max-w-2xl mx-auto flex items-center gap-2 sm:gap-3 bg-white px-3 sm:px-4 py-2.5 rounded-xl border border-[#e5d9c9] shadow-inner"},
+          React.createElement(Icon,{name:"search",className:"w-5 h-5 text-[#888]"}),
+          React.createElement("input",{type:"text",placeholder:"Buscar tortas, cookies, matcha, pan...",value:searchQuery,onChange:(e)=>setSearchQuery(e.target.value),className:"w-full min-w-0 bg-transparent border-none outline-none text-sm text-[#2a2520]",autoFocus:true}),
+          React.createElement("button",{onClick:()=>{setActiveTab("catalog");setIsSearchOpen(false);},className:"shrink-0 bg-[#2a2520] text-white text-xs uppercase tracking-wider px-3 sm:px-4 py-2 rounded-lg hover:bg-[#5d7355] transition-colors"},"Buscar")
+        )
+      ),
+      isMobileMenuOpen&&React.createElement("div",{className:"md:hidden absolute top-full left-0 right-0 bg-[#faf7f2] border-b border-[#e5d9c9] shadow-2xl py-6 px-6 space-y-4 animate-fadeIn max-h-[80dvh] overflow-y-auto"},
+        React.createElement("button",{onClick:()=>{setActiveTab("home");setIsMobileMenuOpen(false);},className:"block w-full text-left font-serif text-lg py-2 border-b border-[#eae0d2] text-[#2a2520]"},"Inicio"),
+        React.createElement("button",{onClick:()=>{setActiveTab("catalog");setSelectedCategory("tortas");setIsMobileMenuOpen(false);},className:"block w-full text-left font-serif text-lg py-2 border-b border-[#eae0d2] text-[#2a2520]"},"Tortas saludables"),
+        React.createElement("button",{onClick:()=>{setActiveTab("catalog");setSelectedCategory("cookies");setIsMobileMenuOpen(false);},className:"block w-full text-left font-serif text-lg py-2 border-b border-[#eae0d2] text-[#2a2520]"},"Cookies saludables"),
+        React.createElement("button",{onClick:()=>{setActiveTab("catalog");setSelectedCategory("matcha");setIsMobileMenuOpen(false);},className:"block w-full text-left font-serif text-lg py-2 border-b border-[#eae0d2] text-[#2a2520]"},"Matcha"),
+        React.createElement("button",{onClick:()=>{setActiveTab("catalog");setSelectedCategory("pan");setIsMobileMenuOpen(false);},className:"block w-full text-left font-serif text-lg py-2 border-b border-[#eae0d2] text-[#2a2520]"},"Pan de masa madre"),
+        React.createElement("button",{onClick:()=>{setActiveTab("about");setIsMobileMenuOpen(false);},className:"block w-full text-left font-serif text-lg py-2 border-b border-[#eae0d2] text-[#2a2520]"},"Nosotros"),
+        React.createElement("button",{onClick:()=>{setActiveTab("shipping");setIsMobileMenuOpen(false);},className:"block w-full text-left font-serif text-lg py-2 border-b border-[#eae0d2] text-[#2a2520]"},"Contacto y Envíos"),
+        React.createElement("div",{className:"pt-2"},
+          React.createElement("a",{href:`https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=Hola%20${CONFIG.BUSINESS_NAME},%20quiero%20hacer%20un%20pedido`,target:"_blank",rel:"noopener noreferrer",className:"w-full flex items-center justify-center gap-3 bg-[#2a2520] text-white py-3.5 rounded-xl font-medium text-xs uppercase tracking-widest shadow-lg"},
+            React.createElement(Icon,{name:"whatsapp",className:"w-5 h-5 text-[#25D366]"}),React.createElement("span",null,"Pedir por WhatsApp")
+          )
+        )
+      )
+    ),
+    React.createElement("main",null,
+      activeTab==="home"&&React.createElement("div",null,
+        React.createElement("section",{className:"relative bg-[#f0e9df] py-14 sm:py-20 lg:py-36 overflow-hidden"},
+          React.createElement("div",{className:"absolute inset-0 opacity-15 bg-[radial-gradient(#5d7355_1px,transparent_1px)] [background-size:20px_20px]"}),
+          React.createElement("div",{className:"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center"},
+            React.createElement("div",{className:"lg:col-span-7 space-y-6 sm:space-y-8 text-center lg:text-left"},
+              React.createElement("div",{className:"inline-flex items-center gap-2 bg-white px-4 sm:px-5 py-2 rounded-full text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[#4a5c43] border border-[#e5d9c9] shadow-sm"},
+                React.createElement("span",{className:"w-2 h-2 rounded-full bg-[#5d7355] animate-ping"}),"Hecho a mano, sin azúcar refinada"
+              ),
+              React.createElement("h2",{className:"font-serif text-3xl sm:text-5xl lg:text-7xl text-[#2a2520] leading-none font-light"},"Horneado saludable, ",React.createElement("span",{className:"italic font-normal text-[#5d7355]"},"sabor que cuida.")),
+              React.createElement("p",{className:"text-sm sm:text-base lg:text-lg text-[#555] font-light max-w-xl mx-auto lg:mx-0 leading-relaxed"},"Tortas, cookies, matcha y pan de masa madre. Ingredientes reales, endulzados con dátiles y panela, horneados artesanalmente. ",CONFIG.TAGLINE),
+              React.createElement("div",{className:"flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-2"},
+                React.createElement("button",{onClick:()=>{setActiveTab("catalog");setSelectedCategory("all");},className:"w-full sm:w-auto bg-[#2a2520] hover:bg-[#5d7355] text-white px-7 sm:px-9 py-3.5 sm:py-4 rounded-full text-xs uppercase tracking-[0.25em] font-medium shadow-xl transition-all"},"VER PRODUCTOS"),
+                React.createElement("a",{href:`https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=Hola%20${CONFIG.BUSINESS_NAME},%20quiero%20asesoría`,target:"_blank",rel:"noopener noreferrer",className:"w-full sm:w-auto bg-white hover:bg-[#faf7f2] text-[#2a2520] border border-[#c9b8a4] px-7 sm:px-9 py-3.5 sm:py-4 rounded-full text-xs uppercase tracking-[0.25em] font-medium shadow-sm transition-all flex items-center justify-center gap-2"},
+                  React.createElement(Icon,{name:"whatsapp",className:"w-4 h-4 text-[#25D366]"}),"PEDIR POR WHATSAPP"
+                )
+              ),
+              React.createElement("div",{className:"pt-4 sm:pt-6 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-3 text-[11px] sm:text-xs uppercase tracking-wider text-[#666]"},
+                React.createElement("div",{className:"flex items-center gap-2"},React.createElement(Icon,{name:"shield",className:"w-4 h-4 text-[#5d7355]"}),React.createElement("span",null,"Sin azúcar refinada")),
+                React.createElement("div",{className:"flex items-center gap-2"},React.createElement(Icon,{name:"clock",className:"w-4 h-4 text-[#5d7355]"}),React.createElement("span",null,CONFIG.BUSINESS_HOURS))
+              )
+            ),
+            React.createElement("div",{className:"lg:col-span-5 relative"},
+              React.createElement("div",{className:"relative mx-auto max-w-md lg:max-w-none"},
+                React.createElement("div",{className:"absolute -inset-4 bg-gradient-to-tr rounded-3xl transform rotate-2 filter blur-md opacity-70"}),
+                React.createElement(ProductImage,{src:CONFIG.HERO_IMAGE,category:"pan",alt:"Pan de masa madre",className:"relative rounded-3xl shadow-2xl w-full h-[320px] sm:h-[420px] lg:h-[500px] transform -rotate-1 hover:rotate-0 transition-transform duration-700"})
+              )
+            )
+          )
+        ),
+        React.createElement("section",{className:"py-14 sm:py-20 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"},
+          React.createElement("div",{className:"text-center max-w-2xl mx-auto mb-10 sm:mb-16 space-y-3"},
+            React.createElement("span",{className:"text-xs uppercase tracking-[0.3em] text-[#5d7355] font-semibold"},CONFIG.BUSINESS_NAME),
+            React.createElement("h3",{className:"font-serif text-3xl sm:text-5xl font-light text-[#2a2520]"},"Nuestras Colecciones"),
+            React.createElement("div",{className:"w-16 h-0.5 bg-[#5d7355] mx-auto"})
+          ),
+          React.createElement("div",{className:"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8"},
+            [{id:"tortas",label:"Tortas saludables",desc:"Endulzadas con dátiles"},{id:"cookies",label:"Cookies saludables",desc:"Sin azúcar, sin gluten"},{id:"matcha",label:"Matcha",desc:"Ceremonial importado"},{id:"pan",label:"Pan de masa madre",desc:"Fermentación 24h"}].map((cat)=>
+              React.createElement("div",{key:cat.id,onClick:()=>{setActiveTab("catalog");setSelectedCategory(cat.id);},className:"group relative h-[320px] sm:h-[420px] rounded-3xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all"},
+                React.createElement(ProductImage,{src:CONFIG.CATEGORY_IMAGES[cat.id],category:cat.id,alt:cat.label,className:"absolute inset-0 w-full h-full group-hover:scale-105 transition-transform duration-700"}),
+                React.createElement("div",{className:"absolute inset-0 bg-gradient-to-t"}),
+                React.createElement("div",{className:"absolute bottom-0 left-0 right-0 p-6 text-white space-y-2"},
+                  React.createElement("h4",{className:"font-serif text-2xl font-light tracking-wide"},cat.label.toUpperCase()),
+                  React.createElement("p",{className:"text-sm text-gray-200 font-light italic"},cat.desc),
+                  React.createElement("div",{className:"pt-2 inline-flex items-center gap-2 text-xs uppercase tracking-widest font-medium border-b border-white pb-1 group-hover:border-[#5d7355] transition-colors"},"VER MÁS ",React.createElement(Icon,{name:"arrow-right",className:"w-4 h-4"}))
+                )
+              )
+            )
+          )
+        ),
+        React.createElement("section",{className:"bg-[#f0e9df] py-14 sm:py-20 lg:py-24"},
+          React.createElement("div",{className:"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"},
+            React.createElement("div",{className:"flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-16 gap-4"},
+              React.createElement("div",null,
+                React.createElement("span",{className:"text-xs uppercase tracking-[0.3em] text-[#5d7355] font-semibold"},"Selección del Mes"),
+                React.createElement("h3",{className:"font-serif text-3xl sm:text-5xl font-light text-[#2a2520] mt-2"},"Los Favoritos")
+              ),
+              React.createElement("button",{onClick:()=>{setActiveTab("catalog");setSelectedCategory("all");},className:"text-xs uppercase tracking-[0.25em] font-medium text-[#2a2520] hover:text-[#5d7355] flex items-center gap-2 transition-colors self-start md:self-auto"},"Ver catálogo completo ",React.createElement(Icon,{name:"arrow-right",className:"w-4 h-4"}))
+            ),
+            React.createElement("div",{className:"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8"},
+              INITIAL_PRODUCTS.filter((p)=>p.featured).slice(0,4).map((product)=>
+                React.createElement("div",{key:product.id,className:"bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all group flex flex-col border border-[#e5d9c9]"},
+                  React.createElement("div",{className:"relative h-60 sm:h-72 lg:h-80 overflow-hidden bg-[#faf7f2]"},
+                    React.createElement(ProductImage,{src:product.image,category:product.category,alt:product.name,className:"w-full h-full group-hover:scale-105 transition-transform duration-700"}),
+                    product.badge&&React.createElement("span",{className:"absolute top-3 left-3 bg-[#2a2520] text-white text-[9px] uppercase font-bold tracking-widest px-3 py-1.5 rounded-full shadow-md"},product.badge),
+                    React.createElement("button",{onClick:()=>{setCurrentProduct(product);setActiveTab("product");},className:"absolute inset-x-3 bottom-3 bg-white text-[#2a2520] py-2.5 rounded-2xl text-xs uppercase tracking-widest font-semibold opacity-0 group-hover:opacity-100 transition-all shadow-xl text-center"},"Ver Detalle")
+                  ),
+                  React.createElement("div",{className:"p-5 sm:p-6 flex-1 flex flex-col justify-between"},
+                    React.createElement("div",null,
+                      React.createElement("p",{className:"text-[10px] uppercase tracking-[0.25em] text-[#888] mb-1"},product.category),
+                      React.createElement("h4",{className:"font-serif text-lg sm:text-xl font-normal text-[#2a2520] line-clamp-1"},product.name),
+                      React.createElement("p",{className:"text-base font-semibold text-[#5d7355] mt-1.5"},product.formattedPrice)
+                    ),
+                    React.createElement("div",{className:"pt-4 flex items-center gap-2 sm:gap-3"},
+                      React.createElement("button",{onClick:()=>addToCart(product,1),className:"flex-1 bg-[#2a2520] hover:bg-[#5d7355] text-white py-2.5 sm:py-3 rounded-xl text-xs uppercase tracking-widest font-medium transition-colors"},"Agregar"),
+                      React.createElement("button",{onClick:()=>{setCurrentProduct(product);setActiveTab("product");},className:"p-2.5 sm:p-3 border border-[#c9b8a4] rounded-xl hover:border-[#5d7355] text-[#2a2520] transition-colors","aria-label":"Ver"},React.createElement(Icon,{name:"search",className:"w-4 h-4"}))
+                    )
+                  )
+                )
+              )
+            )
+          )
+        ),
+        React.createElement("section",{className:"py-14 sm:py-20 lg:py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-[#e5d9c9]"},
+          React.createElement("div",{className:"text-center max-w-2xl mx-auto mb-10 sm:mb-12 space-y-3"},
+            React.createElement("span",{className:"text-xs uppercase tracking-[0.3em] text-[#5d7355] font-semibold"},"Comparte tu Experiencia"),
+            React.createElement("h3",{className:"font-serif text-3xl sm:text-4xl font-light text-[#2a2520]"},"Escribe tu Reseña"),
+            React.createElement("p",{className:"text-sm text-[#666] font-light"},"¿Probaste nuestros productos? Nos encantaría conocer tu opinión.")
+          ),
+          React.createElement("div",{className:"bg-[#f0e9df] p-6 sm:p-12 rounded-3xl border border-[#e5d9c9] shadow-sm max-w-2xl mx-auto"},
+            reviewSuccessMessage&&React.createElement("div",{className:"mb-6 bg-emerald-50 border border-emerald-200 text-emerald-800 p-4 rounded-2xl text-xs uppercase tracking-wider text-center font-medium animate-fadeIn"},"✨ ¡Muchas gracias por tu reseña!"),
+            React.createElement("form",{onSubmit:handleAddReview,className:"space-y-5 sm:space-y-6"},
+              React.createElement("div",null,
+                React.createElement("label",{className:"block text-xs uppercase tracking-wider text-[#666] mb-2 font-medium"},"Tu Nombre *"),
+                React.createElement("input",{type:"text",required:true,placeholder:"Ej. Valentina Gómez",value:newReviewName,onChange:(e)=>setNewReviewName(e.target.value),className:"w-full bg-white border border-[#e5d9c9] rounded-2xl px-4 sm:px-5 py-3 sm:py-3.5 text-sm outline-none focus:border-[#5d7355]"})
+              ),
+              React.createElement("div",null,
+                React.createElement("label",{className:"block text-xs uppercase tracking-wider text-[#666] mb-2 font-medium"},"Calificación"),
+                React.createElement("select",{value:newReviewRating,onChange:(e)=>setNewReviewRating(e.target.value),className:"w-full bg-white border border-[#e5d9c9] rounded-2xl px-4 sm:px-5 py-3 sm:py-3.5 text-sm outline-none focus:border-[#5d7355]"},
+                  React.createElement("option",{value:"5"},"★★★★★ (5/5)"),
+                  React.createElement("option",{value:"4"},"★★★★☆ (4/5)"),
+                  React.createElement("option",{value:"3"},"★★★☆☆ (3/5)")
+                )
+              ),
+              React.createElement("div",null,
+                React.createElement("label",{className:"block text-xs uppercase tracking-wider text-[#666] mb-2 font-medium"},"Tu Comentario *"),
+                React.createElement("textarea",{required:true,rows:"4",placeholder:"Cuéntanos cómo fue tu experiencia...",value:newReviewComment,onChange:(e)=>setNewReviewComment(e.target.value),className:"w-full bg-white border border-[#e5d9c9] rounded-2xl p-4 text-sm outline-none focus:border-[#5d7355]"})
+              ),
+              React.createElement("button",{type:"submit",className:"w-full bg-[#2a2520] hover:bg-[#5d7355] text-white py-3.5 sm:py-4 rounded-2xl text-xs uppercase tracking-[0.2em] font-medium shadow-md transition-all"},"Publicar Reseña")
+            )
+          ),
+          reviews.length>0&&React.createElement("div",{className:"mt-12 sm:mt-16 space-y-5 sm:space-y-6 max-w-2xl mx-auto"},
+            React.createElement("h4",{className:"font-serif text-2xl font-light text-[#2a2520] text-center mb-6 sm:mb-8"},"Reseñas de nuestros clientes"),
+            reviews.map((rev)=>
+              React.createElement("div",{key:rev.id,className:"bg-white p-5 sm:p-8 rounded-3xl border border-[#e5d9c9] shadow-sm space-y-3"},
+                React.createElement("div",{className:"flex items-center justify-between flex-wrap gap-2"},
+                  React.createElement("div",{className:"flex items-center gap-1 text-[#c9a86a]"},[...Array(rev.rating)].map((_,i)=>React.createElement(Icon,{key:i,name:"star",className:"w-4 h-4"}))),
+                  React.createElement("span",{className:"text-xs text-[#888] font-light"},rev.date)
+                ),
+                React.createElement("p",{className:"text-sm text-[#555] font-light leading-relaxed italic"},'"',rev.comment,'"'),
+                React.createElement("p",{className:"text-xs uppercase tracking-widest font-semibold text-[#2a2520]"},"— ",rev.name)
+              )
+            )
+          )
+        ),
+        React.createElement("section",{className:"py-14 sm:py-20 lg:py-24 border-t border-[#e5d9c9] bg-[#f0e9df]"},
+          React.createElement("div",{className:"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"},
+            React.createElement("div",{className:"text-center max-w-xl mx-auto mb-10 sm:mb-16 space-y-3"},
+              React.createElement("span",{className:"text-xs uppercase tracking-[0.3em] text-[#5d7355] font-semibold"},"Inspiración Diaria"),
+              React.createElement("h3",{className:"font-serif text-3xl sm:text-4xl text-[#2a2520]"},"Síguenos en Redes"),
+              React.createElement("div",{className:"flex flex-wrap justify-center gap-4 pt-2"},
+                React.createElement("a",{href:CONFIG.INSTAGRAM_URL,target:"_blank",rel:"noopener noreferrer",className:"text-xs tracking-widest uppercase text-[#666] hover:text-[#5d7355] underline font-medium"},CONFIG.INSTAGRAM_HANDLE),
+                React.createElement("span",{className:"text-[#888]"},"·"),
+                React.createElement("a",{href:CONFIG.TIKTOK_URL,target:"_blank",rel:"noopener noreferrer",className:"text-xs tracking-widest uppercase text-[#666] hover:text-[#5d7355] underline font-medium"},CONFIG.TIKTOK_HANDLE)
+              )
+            ),
+            React.createElement("div",{className:"grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 mb-10 sm:mb-12"},
+              ["tortas","cookies","matcha","pan"].map((cat,idx)=>
+                React.createElement("a",{key:idx,href:CONFIG.INSTAGRAM_URL,target:"_blank",rel:"noopener noreferrer",className:"group relative h-44 sm:h-64 md:h-72 rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm"},
+                  React.createElement(ProductImage,{src:CONFIG.INSTAGRAM_IMAGES[idx],category:cat,alt:"Instagram post",className:"w-full h-full group-hover:scale-110 transition-transform duration-700"}),
+                  React.createElement("div",{className:"absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition-opacity flex items-center justify-center text-white"},React.createElement(Icon,{name:"heart",className:"w-8 h-8 text-[#e8f0e5]"}))
+                )
+              )
+            ),
+            React.createElement("div",{className:"flex flex-wrap justify-center gap-3"},
+              React.createElement("a",{href:CONFIG.INSTAGRAM_URL,target:"_blank",rel:"noopener noreferrer",className:"inline-flex items-center gap-3 border border-[#2a2520] text-[#2a2520] hover:bg-[#2a2520] hover:text-white px-7 sm:px-10 py-3.5 sm:py-4 rounded-full text-xs uppercase tracking-[0.25em] font-medium transition-colors"},"Instagram"),
+              React.createElement("a",{href:CONFIG.TIKTOK_URL,target:"_blank",rel:"noopener noreferrer",className:"inline-flex items-center gap-3 border border-[#2a2520] text-[#2a2520] hover:bg-[#2a2520] hover:text-white px-7 sm:px-10 py-3.5 sm:py-4 rounded-full text-xs uppercase tracking-[0.25em] font-medium transition-colors"},"TikTok")
+            )
+          )
+        )
+      ),
+      activeTab==="catalog"&&React.createElement("div",{className:"py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-fadeIn"},
+        React.createElement("div",{className:"text-center max-w-2xl mx-auto mb-8 sm:mb-12 space-y-3"},
+          React.createElement("span",{className:"text-xs uppercase tracking-[0.3em] text-[#5d7355] font-semibold"},CONFIG.BUSINESS_NAME),
+          React.createElement("h2",{className:"font-serif text-3xl sm:text-5xl font-light text-[#2a2520]"},"Catálogo Saludable"),
+          React.createElement("p",{className:"text-sm text-[#666] font-light"},"Todo horneado a mano, sin azúcar refinada, con ingredientes reales.")
+        ),
+        React.createElement("div",{className:"flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10 sm:mb-16"},
+          [{id:"all",label:"Todos"},{id:"tortas",label:"Tortas"},{id:"cookies",label:"Cookies"},{id:"matcha",label:"Matcha"},{id:"pan",label:"Pan de Masa Madre"}].map((cat)=>
+            React.createElement("button",{key:cat.id,onClick:()=>setSelectedCategory(cat.id),className:`px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] font-medium transition-all ${selectedCategory===cat.id?"bg-[#2a2520] text-white shadow-lg":"bg-white text-[#555] border border-[#e5d9c9] hover:border-[#5d7355]"}`},cat.label)
+          )
+        ),
+        filteredProducts.length===0?React.createElement("div",{className:"text-center py-16 sm:py-24 bg-white rounded-3xl border border-[#e5d9c9] shadow-sm"},
+          React.createElement("p",{className:"text-[#777] text-lg sm:text-xl font-serif"},"No encontramos productos en esta categoría."),
+          React.createElement("button",{onClick:()=>setSelectedCategory("all"),className:"mt-6 text-xs uppercase tracking-widest font-medium text-[#5d7355] underline"},"Ver todo el catálogo")
+        ):React.createElement("div",{className:"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"},
+          filteredProducts.map((product)=>
+            React.createElement("div",{key:product.id,className:"bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all group flex flex-col border border-[#e5d9c9]"},
+              React.createElement("div",{className:"relative h-64 sm:h-80 overflow-hidden bg-[#faf7f2]"},
+                React.createElement(ProductImage,{src:product.image,category:product.category,alt:product.name,className:"w-full h-full group-hover:scale-105 transition-transform duration-700"}),
+                product.badge&&React.createElement("span",{className:"absolute top-3 left-3 bg-[#2a2520] text-white text-[9px] uppercase font-bold tracking-widest px-3 py-1.5 rounded-full shadow-md"},product.badge)
+              ),
+              React.createElement("div",{className:"p-6 sm:p-8 flex-1 flex flex-col justify-between"},
+                React.createElement("div",null,
+                  React.createElement("p",{className:"text-[10px] uppercase tracking-[0.25em] text-[#888] mb-1"},product.category),
+                  React.createElement("h4",{className:"font-serif text-xl sm:text-2xl font-normal text-[#2a2520]"},product.name),
+                  React.createElement("p",{className:"text-lg font-semibold text-[#5d7355] mt-2"},product.formattedPrice),
+                  React.createElement("p",{className:"text-xs text-[#666] mt-3 line-clamp-2 font-light leading-relaxed"},product.description)
+                ),
+                React.createElement("div",{className:"pt-6 sm:pt-8 flex items-center gap-3 sm:gap-4"},
+                  React.createElement("button",{onClick:()=>{setCurrentProduct(product);setActiveTab("product");},className:"flex-1 bg-white border border-[#2a2520] text-[#2a2520] hover:bg-[#2a2520] hover:text-white py-3 sm:py-3.5 rounded-2xl text-xs uppercase tracking-[0.2em] font-medium transition-colors text-center"},"Ver detalle"),
+                  React.createElement("button",{onClick:()=>addToCart(product,1),className:"bg-[#2a2520] hover:bg-[#5d7355] text-white p-3 sm:p-3.5 rounded-2xl transition-colors shadow-sm","aria-label":"Agregar"},React.createElement(Icon,{name:"shopping-bag",className:"w-5 h-5"}))
+                )
+              )
+            )
+          )
+        )
+      ),
+      activeTab==="product"&&currentProduct&&React.createElement("div",{className:"py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-fadeIn"},
+        React.createElement("button",{onClick:()=>setActiveTab("catalog"),className:"text-xs text-[#777] hover:text-[#5d7355] uppercase tracking-[0.2em] mb-8 sm:mb-10 flex items-center gap-2 font-medium"},"← Volver al catálogo"),
+        React.createElement("div",{className:"grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start"},
+          React.createElement("div",{className:"lg:col-span-6"},
+            React.createElement("div",{className:"rounded-3xl overflow-hidden shadow-xl bg-[#faf7f2] h-[320px] sm:h-[480px] lg:h-[600px] border border-[#e5d9c9]"},
+              React.createElement(ProductImage,{src:currentProduct.image,category:currentProduct.category,alt:currentProduct.name,className:"w-full h-full"})
+            )
+          ),
+          React.createElement("div",{className:"lg:col-span-6 space-y-6 sm:space-y-8"},
+            React.createElement("div",null,
+              React.createElement("span",{className:"text-xs uppercase tracking-[0.3em] text-[#5d7355] font-semibold"},currentProduct.category),
+              React.createElement("h2",{className:"font-serif text-2xl sm:text-4xl lg:text-5xl font-light text-[#2a2520] mt-2"},currentProduct.name),
+              React.createElement("p",{className:"text-2xl sm:text-3xl font-semibold text-[#5d7355] mt-3"},currentProduct.formattedPrice)
+            ),
+            React.createElement("p",{className:"text-[#555] font-light text-sm sm:text-base leading-relaxed"},currentProduct.description),
+            React.createElement("div",{className:"bg-[#f0e9df] p-4 sm:p-5 rounded-2xl border border-[#e5d9c9] flex items-center gap-3"},
+              React.createElement("span",{className:"w-3 h-3 rounded-full bg-green-500 animate-pulse shrink-0"}),
+              React.createElement("span",{className:"text-xs uppercase tracking-wider font-medium text-[#2a2520]"},"Disponible con pedido previo por WhatsApp")
+            ),
+            ((_a=currentProduct.variants)==null?void 0:_a.colors)&&React.createElement("div",{className:"space-y-3"},
+              React.createElement("label",{className:"text-xs uppercase tracking-[0.2em] font-semibold text-[#2a2520]"},"Opción:"),
+              React.createElement("div",{className:"flex flex-wrap gap-2"},currentProduct.variants.colors.map((col)=>
+                React.createElement("button",{key:col,onClick:()=>setSelectedColor(col),className:`px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs font-medium transition-all ${selectedColor===col?"bg-[#2a2520] text-white shadow-md":"bg-white border border-[#e5d9c9] text-[#555] hover:border-[#5d7355]"}`},col)
+              ))
+            ),
+            ((_b=currentProduct.variants)==null?void 0:_b.sizes)&&React.createElement("div",{className:"space-y-3"},
+              React.createElement("label",{className:"text-xs uppercase tracking-[0.2em] font-semibold text-[#2a2520]"},"Tamaño / Cantidad:"),
+              React.createElement("div",{className:"flex flex-wrap gap-2"},currentProduct.variants.sizes.map((sz)=>
+                React.createElement("button",{key:sz,onClick:()=>setSelectedSize(sz),className:`px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs font-medium transition-all ${selectedSize===sz?"bg-[#2a2520] text-white shadow-md":"bg-white border border-[#e5d9c9] text-[#555] hover:border-[#5d7355]"}`},sz)
+              ))
+            ),
+            ((_c=currentProduct.variants)==null?void 0:_c.presentations)&&React.createElement("div",{className:"space-y-3"},
+              React.createElement("label",{className:"text-xs uppercase tracking-[0.2em] font-semibold text-[#2a2520]"},"Presentación:"),
+              React.createElement("div",{className:"flex flex-wrap gap-2"},currentProduct.variants.presentations.map((pres)=>
+                React.createElement("button",{key:pres,onClick:()=>setSelectedPresentation(pres),className:`px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs font-medium transition-all ${selectedPresentation===pres?"bg-[#2a2520] text-white shadow-md":"bg-white border border-[#e5d9c9] text-[#555] hover:border-[#5d7355]"}`},pres)
+              ))
+            ),
+            React.createElement("div",{className:"border-t border-b border-[#e5d9c9] py-6 sm:py-8 space-y-5 sm:space-y-6"},
+              React.createElement("div",{className:"space-y-1"},
+                React.createElement("h4",{className:"font-serif text-xl sm:text-2xl font-light text-[#2a2520]"},"Personaliza tu pedido"),
+                React.createElement("p",{className:"text-xs text-[#777] uppercase tracking-wider"},"Incluye tarjeta de dedicatoria sin costo adicional.")
+              ),
+              React.createElement("div",{className:"grid grid-cols-1 sm:grid-cols-2 gap-4"},
+                React.createElement("div",null,
+                  React.createElement("label",{className:"block text-xs uppercase tracking-wider text-[#666] mb-2 font-medium"},"Nombre del Destinatario"),
+                  React.createElement("input",{type:"text",placeholder:"Ej. Sofía Martínez",value:recipientName,onChange:(e)=>setRecipientName(e.target.value),className:"w-full bg-white border border-[#e5d9c9] rounded-2xl px-4 sm:px-5 py-3 sm:py-3.5 text-sm outline-none focus:border-[#5d7355]"})
+                ),
+                React.createElement("div",null,
+                  React.createElement("label",{className:"block text-xs uppercase tracking-wider text-[#666] mb-2 font-medium"},"Ocasión"),
+                  React.createElement("select",{value:selectedOccasion,onChange:(e)=>setSelectedOccasion(e.target.value),className:"w-full bg-white border border-[#e5d9c9] rounded-2xl px-4 sm:px-5 py-3 sm:py-3.5 text-sm outline-none focus:border-[#5d7355]"},
+                    React.createElement("option",{value:"Cumpleaños"},"Cumpleaños"),
+                    React.createElement("option",{value:"Aniversario"},"Aniversario"),
+                    React.createElement("option",{value:"Día de la Madre"},"Día de la Madre"),
+                    React.createElement("option",{value:"Agradecimiento"},"Agradecimiento"),
+                    React.createElement("option",{value:"Regalo corporativo"},"Regalo corporativo"),
+                    React.createElement("option",{value:"Para mí"},"Para mí"),
+                    React.createElement("option",{value:"Otra"},"Otra")
+                  )
+                )
+              ),
+              React.createElement("div",null,
+                React.createElement("label",{className:"block text-xs uppercase tracking-wider text-[#666] mb-2 font-medium"},"Mensaje para la Tarjeta"),
+                React.createElement("textarea",{rows:"3",placeholder:"Ej. Con todo mi cariño...",value:customMessage,onChange:(e)=>setCustomMessage(e.target.value),className:"w-full bg-white border border-[#e5d9c9] rounded-2xl p-4 text-sm outline-none focus:border-[#5d7355]"})
+              )
+            ),
+            React.createElement("div",{className:"space-y-3 sm:space-y-4"},
+              React.createElement("div",{className:"flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4"},
+                React.createElement("div",{className:"flex items-center justify-center border border-[#e5d9c9] rounded-2xl bg-white shadow-sm self-start"},
+                  React.createElement("button",{onClick:()=>setProductQuantity(Math.max(1,productQuantity-1)),className:"px-5 py-3.5 sm:py-4 text-base font-medium text-[#555] hover:text-[#2a2520]","aria-label":"Reducir"},"-"),
+                  React.createElement("span",{className:"px-4 py-3.5 sm:py-4 text-sm font-semibold"},productQuantity),
+                  React.createElement("button",{onClick:()=>setProductQuantity(productQuantity+1),className:"px-5 py-3.5 sm:py-4 text-base font-medium text-[#555] hover:text-[#2a2520]","aria-label":"Aumentar"},"+")
+                ),
+                React.createElement("button",{onClick:()=>addToCart(currentProduct,productQuantity),className:"flex-1 bg-[#2a2520] hover:bg-[#5d7355] text-white py-3.5 sm:py-4 rounded-2xl text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] font-medium shadow-lg transition-all text-center"},"Agregar al Carrito")
+              ),
+              React.createElement("button",{onClick:()=>handleBuyNowDirect(currentProduct),className:"w-full bg-[#25D366] hover:bg-[#20ba5a] text-white py-3.5 sm:py-4 rounded-2xl text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] font-medium shadow-lg transition-all flex items-center justify-center gap-3"},
+                React.createElement(Icon,{name:"whatsapp",className:"w-5 h-5"}),
+                React.createElement("span",{className:"hidden sm:inline"},"Comprar por WhatsApp (",CONFIG.WHATSAPP_DISPLAY,")"),
+                React.createElement("span",{className:"sm:hidden"},"Comprar por WhatsApp")
+              )
+            )
+          )
+        )
+      ),
+      activeTab==="about"&&React.createElement("div",{className:"py-16 sm:py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16 animate-fadeIn"},
+        React.createElement("div",{className:"text-center space-y-4"},
+          React.createElement("span",{className:"text-xs uppercase tracking-[0.3em] text-[#5d7355] font-semibold"},CONFIG.TAGLINE),
+          React.createElement("h2",{className:"font-serif text-3xl sm:text-5xl lg:text-6xl font-light text-[#2a2520]"},"Horneado con propósito"),
+          React.createElement("div",{className:"w-20 h-0.5 bg-[#5d7355] mx-auto"})
+        ),
+        React.createElement("div",{className:"grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center"},
+          React.createElement(ProductImage,{src:CONFIG.ABOUT_IMAGE,category:"pan",alt:"Horneado",className:"rounded-3xl shadow-xl h-[320px] sm:h-[420px] border border-[#e5d9c9]"}),
+          React.createElement("div",{className:"space-y-5 sm:space-y-6 text-[#555] font-light text-sm sm:text-base leading-relaxed"},
+            React.createElement("p",null,"Somos ",React.createElement("strong",null,CONFIG.BUSINESS_NAME),", un proyecto de repostería saludable que fusiona el sabor de lo artesanal con ingredientes que cuidan tu bienestar."),
+            React.createElement("p",null,"Horneamos tortas, cookies, pan de masa madre y seleccionamos matcha de grado ceremonial. Todo endulzado con dátiles, panela o frutas, sin azúcar refinada ni conservantes."),
+            React.createElement("div",{className:"pt-5 sm:pt-6 border-t border-[#e5d9c9] space-y-3"},
+              React.createElement("p",{className:"text-xs uppercase tracking-[0.2em] text-[#2a2520] font-semibold"},"Información & Contacto"),
+              React.createElement("p",{className:"text-sm"},'🕐 ',CONFIG.BUSINESS_HOURS),
+              React.createElement("p",{className:"text-sm"},'📞 WhatsApp: ',CONFIG.WHATSAPP_DISPLAY),
+              React.createElement("p",{className:"text-sm break-all"},'✉️ Email: ',CONFIG.EMAIL),
+              React.createElement("p",{className:"text-sm"},'📸 Instagram: ',CONFIG.INSTAGRAM_HANDLE),
+              React.createElement("p",{className:"text-sm"},'🎵 TikTok: ',CONFIG.TIKTOK_HANDLE)
+            )
+          )
+        )
+      ),
+      activeTab==="shipping"&&React.createElement("div",{className:"py-16 sm:py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16 animate-fadeIn"},
+        React.createElement("div",{className:"text-center space-y-4"},
+          React.createElement("span",{className:"text-xs uppercase tracking-[0.3em] text-[#5d7355] font-semibold"},"Contacto & Envíos"),
+          React.createElement("h2",{className:"font-serif text-3xl sm:text-5xl lg:text-6xl font-light text-[#2a2520]"},"Hablemos por WhatsApp"),
+          React.createElement("div",{className:"w-20 h-0.5 bg-[#5d7355] mx-auto"})
+        ),
+        React.createElement("div",{className:"bg-white border border-[#e5d9c9] rounded-3xl p-6 sm:p-14 shadow-sm space-y-8 sm:space-y-10"},
+          React.createElement("div",{className:"flex items-start gap-4 sm:gap-6"},
+            React.createElement("div",{className:"p-3 sm:p-4 bg-[#f0e9df] text-[#5d7355] rounded-2xl shrink-0"},React.createElement(Icon,{name:"truck",className:"w-7 h-7 sm:w-8 sm:h-8"})),
+            React.createElement("div",{className:"space-y-2 min-w-0"},
+              React.createElement("h4",{className:"font-serif text-xl sm:text-2xl text-[#2a2520]"},"Entregas coordinadas"),
+              React.createElement("p",{className:"text-sm text-[#666] font-light leading-relaxed"},CONFIG.DELIVERY_AREA)
+            )
+          ),
+          React.createElement("div",{className:"grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 pt-6 sm:pt-8 border-t border-[#e5d9c9]"},
+            React.createElement("div",{className:"space-y-3"},
+              React.createElement("h5",{className:"font-semibold text-xs uppercase tracking-[0.2em] text-[#2a2520]"},"Contacto"),
+              React.createElement("p",{className:"text-sm text-[#666] font-light"},'📞 ',CONFIG.WHATSAPP_DISPLAY),
+              React.createElement("p",{className:"text-sm text-[#666] font-light break-all"},'✉️ ',CONFIG.EMAIL),
+              React.createElement("p",{className:"text-sm text-[#666] font-light"},'📸 Instagram ',CONFIG.INSTAGRAM_HANDLE),
+              React.createElement("p",{className:"text-sm text-[#666] font-light"},'🎵 TikTok ',CONFIG.TIKTOK_HANDLE)
+            ),
+            React.createElement("div",{className:"space-y-3"},
+              React.createElement("h5",{className:"font-semibold text-xs uppercase tracking-[0.2em] text-[#2a2520]"},"Horarios & Pagos"),
+              React.createElement("p",{className:"text-sm text-[#666] font-light"},CONFIG.BUSINESS_HOURS),
+              React.createElement("p",{className:"text-xs text-[#555] font-light"},"Métodos de pago: Nequi, Daviplata y transferencia bancaria."),
+              React.createElement("p",{className:"text-sm pt-2 font-medium text-[#25D366]"},'📞 ',CONFIG.WHATSAPP_DISPLAY)
+            )
+          )
+        )
+      )
+    ),
+    isCartOpen&&React.createElement("div",{className:"fixed inset-0 z-50 overflow-hidden animate-fadeIn"},
+      React.createElement("div",{className:"absolute inset-0 bg-black opacity-60",onClick:()=>setIsCartOpen(false)}),
+      React.createElement("div",{className:"absolute inset-y-0 right-0 w-full max-w-md flex"},
+        React.createElement("div",{className:"w-full bg-white shadow-2xl flex flex-col border-l border-[#e5d9c9]"},
+          React.createElement("div",{className:"p-5 sm:p-6 border-b border-[#e5d9c9] flex items-center justify-between bg-[#faf7f2]"},
+            React.createElement("h3",{className:"font-serif text-xl sm:text-2xl font-light text-[#2a2520]"},"Tu Carrito (",totalCartCount,")"),
+            React.createElement("button",{onClick:()=>setIsCartOpen(false),className:"p-2 text-[#777] hover:text-[#2a2520]","aria-label":"Cerrar"},React.createElement(Icon,{name:"close",className:"w-6 h-6"}))
+          ),
+          React.createElement("div",{className:"flex-1 overflow-y-auto p-5 sm:p-6 space-y-5 sm:space-y-6"},
+            cart.length===0?React.createElement("div",{className:"text-center py-20 sm:py-24 space-y-6"},
+              React.createElement(Icon,{name:"shopping-bag",className:"w-14 h-14 text-[#ccc] mx-auto"}),
+              React.createElement("p",{className:"text-base text-[#666] font-serif"},"Tu carrito está vacío."),
+              React.createElement("button",{onClick:()=>{setIsCartOpen(false);setActiveTab("catalog");},className:"bg-[#2a2520] text-white px-7 sm:px-8 py-3.5 rounded-full text-xs uppercase tracking-[0.2em]"},"Explorar Productos")
+            ):cart.map((item)=>
+              React.createElement("div",{key:item.cartId,className:"flex gap-3 sm:gap-4 pb-5 sm:pb-6 border-b border-[#e5d9c9] items-start"},
+                React.createElement(ProductImage,{src:item.image,category:item.category,alt:item.name,className:"w-16 h-16 sm:w-20 sm:h-20 rounded-2xl border border-[#e5d9c9] shrink-0"}),
+                React.createElement("div",{className:"flex-1 min-w-0"},
+                  React.createElement("h4",{className:"font-serif text-sm font-normal text-[#2a2520] break-words"},item.name),
+                  React.createElement("p",{className:"text-xs text-[#888] mt-0.5 break-words"},item.color," | ",item.size," | ",item.presentation),
+                  item.recipientName&&React.createElement("p",{className:"text-[11px] text-[#5d7355] mt-0.5 font-medium break-words"},"Para: ",item.recipientName," (",item.occasion,")"),
+                  React.createElement("p",{className:"text-sm font-semibold text-[#5d7355] mt-1.5"},item.formattedPrice),
+                  React.createElement("div",{className:"flex items-center justify-between mt-3 gap-2"},
+                    React.createElement("div",{className:"flex items-center border border-[#e5d9c9] rounded-xl bg-white shadow-sm"},
+                      React.createElement("button",{onClick:()=>updateCartQuantity(item.cartId,-1),className:"px-3 py-1.5 text-xs font-medium","aria-label":"Reducir"},"-"),
+                      React.createElement("span",{className:"px-3 text-xs font-semibold"},item.quantity),
+                      React.createElement("button",{onClick:()=>updateCartQuantity(item.cartId,1),className:"px-3 py-1.5 text-xs font-medium","aria-label":"Aumentar"},"+")
+                    ),
+                    React.createElement("button",{onClick:()=>removeFromCart(item.cartId),className:"text-[#999] hover:text-red-500 p-2 shrink-0","aria-label":"Eliminar"},React.createElement(Icon,{name:"trash",className:"w-4 h-4"}))
+                  )
+                )
+              )
+            )
+          ),
+          cart.length>0&&React.createElement("div",{className:"p-5 sm:p-6 border-t border-[#e5d9c9] bg-[#faf7f2] space-y-4 sm:space-y-5"},
+            React.createElement("div",{className:"space-y-2.5 text-sm"},
+              React.createElement("div",{className:"flex justify-between text-[#666]"},React.createElement("span",null,"Subtotal"),React.createElement("span",null,"$",cartSubtotal.toLocaleString())),
+              React.createElement("div",{className:"flex justify-between text-[#666]"},React.createElement("span",null,"Envío"),React.createElement("span",null,"A coordinar")),
+              React.createElement("div",{className:"flex justify-between text-base font-semibold text-[#2a2520] pt-2 border-t border-[#e5d9c9]"},React.createElement("span",null,"Total"),React.createElement("span",null,"$",cartTotal.toLocaleString()))
+            ),
+            React.createElement("button",{onClick:()=>{setIsCartOpen(false);setIsCheckoutOpen(true);},className:"w-full bg-[#2a2520] hover:bg-[#5d7355] text-white py-3.5 sm:py-4 rounded-2xl text-xs uppercase tracking-[0.25em] font-medium shadow-xl transition-all text-center"},"FINALIZAR PEDIDO")
+          )
+        )
+      )
+    ),
+    isCheckoutOpen&&React.createElement("div",{className:"fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto animate-fadeIn"},
+      React.createElement("div",{className:"fixed inset-0 bg-black opacity-60",onClick:()=>setIsCheckoutOpen(false)}),
+      React.createElement("div",{className:"relative bg-white rounded-3xl shadow-2xl max-w-2xl w-full p-5 sm:p-12 z-10 my-6 sm:my-8 max-h-[92dvh] overflow-y-auto border border-[#e5d9c9]"},
+        React.createElement("div",{className:"flex items-start justify-between pb-5 sm:pb-6 border-b border-[#e5d9c9] gap-3"},
+          React.createElement("div",{className:"min-w-0"},
+            React.createElement("h3",{className:"font-serif text-xl sm:text-3xl font-light text-[#2a2520]"},"Finalizar Pedido"),
+            React.createElement("p",{className:"text-[11px] sm:text-xs text-[#5d7355] mt-1 font-medium"},"Confirmación por WhatsApp")
+          ),
+          React.createElement("button",{onClick:()=>setIsCheckoutOpen(false),className:"p-2 text-[#777] hover:text-[#2a2520] shrink-0","aria-label":"Cerrar"},React.createElement(Icon,{name:"close",className:"w-6 h-6"}))
+        ),
+        React.createElement("form",{onSubmit:handleWhatsAppCheckout,className:"space-y-5 sm:space-y-6 pt-5 sm:pt-6"},
+          React.createElement("div",{className:"bg-[#f0e9df] border border-[#e5d9c9] p-4 rounded-2xl flex items-start gap-3"},
+            React.createElement(Icon,{name:"map-pin",className:"w-5 h-5 text-[#5d7355] shrink-0 mt-0.5"}),
+            React.createElement("div",{className:"text-xs text-[#555] font-light"},React.createElement("strong",{className:"text-[#2a2520] font-medium"},"Coordinamos entregas por WhatsApp.")," Completa tus datos y te contactamos para confirmar envío, fecha y forma de pago.")
+          ),
+          React.createElement("div",{className:"grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5"},
+            React.createElement("div",null,
+              React.createElement("label",{className:"block text-xs uppercase tracking-wider text-[#666] mb-2 font-medium"},"Nombre Completo *"),
+              React.createElement("input",{type:"text",required:true,placeholder:"Tu nombre y apellido",value:checkoutForm.fullName,onChange:(e)=>setCheckoutForm({...checkoutForm,fullName:e.target.value}),className:"w-full bg-white border border-[#e5d9c9] rounded-2xl px-4 sm:px-5 py-3 sm:py-3.5 text-sm outline-none focus:border-[#5d7355]"})
+            ),
+            React.createElement("div",null,
+              React.createElement("label",{className:"block text-xs uppercase tracking-wider text-[#666] mb-2 font-medium"},"Número de WhatsApp *"),
+              React.createElement("input",{type:"tel",required:true,inputMode:"tel",placeholder:"Ej. 304 391 5423",value:checkoutForm.whatsapp,onChange:(e)=>setCheckoutForm({...checkoutForm,whatsapp:e.target.value}),className:"w-full bg-white border border-[#e5d9c9] rounded-2xl px-4 sm:px-5 py-3 sm:py-3.5 text-sm outline-none focus:border-[#5d7355]"})
+            )
+          ),
+          React.createElement("div",{className:"grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5"},
+            React.createElement("div",null,
+              React.createElement("label",{className:"block text-xs uppercase tracking-wider text-[#666] mb-2 font-medium"},"Dirección de Entrega *"),
+              React.createElement("input",{type:"text",required:true,placeholder:"Calle, número, apto/edificio",value:checkoutForm.address,onChange:(e)=>setCheckoutForm({...checkoutForm,address:e.target.value}),className:"w-full bg-white border border-[#e5d9c9] rounded-2xl px-4 sm:px-5 py-3 sm:py-3.5 text-sm outline-none focus:border-[#5d7355]"})
+            ),
+            React.createElement("div",null,
+              React.createElement("label",{className:"block text-xs uppercase tracking-wider text-[#666] mb-2 font-medium"},"Barrio / Ciudad *"),
+              React.createElement("input",{type:"text",required:true,placeholder:"Ej. Chapinero, Bogotá",value:checkoutForm.neighborhood,onChange:(e)=>setCheckoutForm({...checkoutForm,neighborhood:e.target.value}),className:"w-full bg-white border border-[#e5d9c9] rounded-2xl px-4 sm:px-5 py-3 sm:py-3.5 text-sm outline-none focus:border-[#5d7355]"})
+            )
+          ),
+          React.createElement("div",null,
+            React.createElement("label",{className:"block text-xs uppercase tracking-wider text-[#666] mb-2 font-medium"},"Punto de Referencia (Opcional)"),
+            React.createElement("input",{type:"text",placeholder:"Ej. Frente al parque, portería azul...",value:checkoutForm.reference,onChange:(e)=>setCheckoutForm({...checkoutForm,reference:e.target.value}),className:"w-full bg-white border border-[#e5d9c9] rounded-2xl px-4 sm:px-5 py-3 sm:py-3.5 text-sm outline-none focus:border-[#5d7355]"})
+          ),
+          React.createElement("div",{className:"grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5"},
+            React.createElement("div",null,
+              React.createElement("label",{className:"block text-xs uppercase tracking-wider text-[#666] mb-2 font-medium"},"Fecha de Entrega"),
+              React.createElement("input",{type:"date",value:checkoutForm.deliveryDate,onChange:(e)=>setCheckoutForm({...checkoutForm,deliveryDate:e.target.value}),className:"w-full bg-white border border-[#e5d9c9] rounded-2xl px-4 sm:px-5 py-3 sm:py-3.5 text-sm outline-none focus:border-[#5d7355]"})
+            ),
+            React.createElement("div",null,
+              React.createElement("label",{className:"block text-xs uppercase tracking-wider text-[#666] mb-2 font-medium"},"Franja Horaria"),
+              React.createElement("select",{value:checkoutForm.timeSlot,onChange:(e)=>setCheckoutForm({...checkoutForm,timeSlot:e.target.value}),className:"w-full bg-white border border-[#e5d9c9] rounded-2xl px-4 sm:px-5 py-3 sm:py-3.5 text-sm outline-none focus:border-[#5d7355]"},
+                React.createElement("option",{value:"Mañana (9:00 a.m. - 1:00 p.m.)"},"Mañana (9:00 a.m. - 1:00 p.m.)"),
+                React.createElement("option",{value:"Tarde (2:00 p.m. - 6:00 p.m.)"},"Tarde (2:00 p.m. - 6:00 p.m.)"),
+                React.createElement("option",{value:"Hora exacta a acordar"},"Hora exacta a acordar")
+              )
+            )
+          ),
+          React.createElement("div",null,
+            React.createElement("label",{className:"block text-xs uppercase tracking-wider text-[#666] mb-2 font-medium"},"Método de Pago"),
+            React.createElement("input",{type:"text",value:"Nequi / Daviplata / Transferencia bancaria",disabled:true,className:"w-full bg-[#faf7f2] border border-[#e5d9c9] rounded-2xl px-4 sm:px-5 py-3 sm:py-3.5 text-sm outline-none font-medium text-[#2a2520] cursor-not-allowed"}),
+            React.createElement("p",{className:"text-[11px] text-[#888] mt-1.5"},"Coordinamos el pago por WhatsApp una vez confirmado el pedido.")
+          ),
+          React.createElement("div",null,
+            React.createElement("label",{className:"block text-xs uppercase tracking-wider text-[#666] mb-2 font-medium"},"Nota adicional (Opcional)"),
+            React.createElement("textarea",{rows:"2",placeholder:"Instrucciones para la entrega...",value:checkoutForm.note,onChange:(e)=>setCheckoutForm({...checkoutForm,note:e.target.value}),className:"w-full bg-white border border-[#e5d9c9] rounded-2xl p-4 text-sm outline-none focus:border-[#5d7355]"})
+          ),
+          React.createElement("div",{className:"pt-3 sm:pt-4"},
+            React.createElement("button",{type:"submit",className:"w-full bg-[#25D366] hover:bg-[#20ba5a] text-white py-3.5 sm:py-4 rounded-2xl text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] font-medium shadow-xl transition-all flex items-center justify-center gap-3 cursor-pointer"},
+              React.createElement(Icon,{name:"whatsapp",className:"w-5 h-5"}),
+              React.createElement("span",{className:"hidden sm:inline"},"Enviar pedido por WhatsApp"),
+              React.createElement("span",{className:"sm:hidden"},"Enviar por WhatsApp")
+            )
+          )
+        )
+      )
+    ),
+    React.createElement("a",{href:`https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=Hola%20${CONFIG.BUSINESS_NAME},%20quiero%20más%20información`,target:"_blank",rel:"noopener noreferrer",className:"floating-wa","aria-label":"Contactar por WhatsApp"},
+      React.createElement(Icon,{name:"whatsapp",className:""})
+    ),
+    React.createElement("footer",{className:"bg-[#2a2520] text-[#f4f1ea] pt-16 sm:pt-20 pb-10 sm:pb-12 mt-20 sm:mt-28 border-t border-[#3a342e]"},
+      React.createElement("div",{className:"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 pb-12 sm:pb-16 border-t border-[#3a342e] pt-10 sm:pt-12"},
+        React.createElement("div",{className:"space-y-4"},
+          React.createElement("h3",{className:"font-serif text-2xl tracking-wider"},CONFIG.BUSINESS_NAME),
+          React.createElement("p",{className:"text-xs text-[#aaa] font-light leading-relaxed"},CONFIG.TAGLINE," Tortas, cookies, matcha y pan de masa madre, horneados artesanalmente."),
+          React.createElement("p",{className:"text-xs text-[#c9a86a] font-medium"},"Sin azúcar refinada · Ingredientes reales")
+        ),
+        React.createElement("div",{className:"space-y-3"},
+          React.createElement("h4",{className:"font-semibold text-xs tracking-[0.2em] uppercase text-white"},"Navegación"),
+          React.createElement("ul",{className:"space-y-2.5 text-xs text-[#aaa] font-light"},
+            React.createElement("li",null,React.createElement("button",{onClick:()=>setActiveTab("home"),className:"hover:text-white transition-colors"},"Inicio")),
+            React.createElement("li",null,React.createElement("button",{onClick:()=>{setActiveTab("catalog");setSelectedCategory("tortas");},className:"hover:text-white transition-colors"},"Tortas")),
+            React.createElement("li",null,React.createElement("button",{onClick:()=>{setActiveTab("catalog");setSelectedCategory("cookies");},className:"hover:text-white transition-colors"},"Cookies")),
+            React.createElement("li",null,React.createElement("button",{onClick:()=>{setActiveTab("catalog");setSelectedCategory("matcha");},className:"hover:text-white transition-colors"},"Matcha")),
+            React.createElement("li",null,React.createElement("button",{onClick:()=>{setActiveTab("catalog");setSelectedCategory("pan");},className:"hover:text-white transition-colors"},"Pan de masa madre"))
+          )
+        ),
+        React.createElement("div",{className:"space-y-3"},
+          React.createElement("h4",{className:"font-semibold text-xs tracking-[0.2em] uppercase text-white"},"Contacto"),
+          React.createElement("ul",{className:"space-y-2.5 text-xs text-[#aaa] font-light break-words"},
+            React.createElement("li",null,React.createElement("span",{className:"text-white"},"WhatsApp:")," ",CONFIG.WHATSAPP_DISPLAY),
+            React.createElement("li",null,React.createElement("span",{className:"text-white"},"Email:")," ",CONFIG.EMAIL),
+            React.createElement("li",null,React.createElement("span",{className:"text-white"},"Instagram:")," ",CONFIG.INSTAGRAM_HANDLE),
+            React.createElement("li",null,React.createElement("span",{className:"text-white"},"TikTok:")," ",CONFIG.TIKTOK_HANDLE),
+            React.createElement("li",null,React.createElement("span",{className:"text-white"},"Horario:")," ",CONFIG.BUSINESS_HOURS)
+          )
+        ),
+        React.createElement("div",{className:"space-y-3"},
+          React.createElement("h4",{className:"font-semibold text-xs tracking-[0.2em] uppercase text-white"},"Síguenos"),
+          React.createElement("ul",{className:"space-y-2.5 text-xs text-[#aaa] font-light"},
+            React.createElement("li",null,React.createElement("a",{href:CONFIG.INSTAGRAM_URL,target:"_blank",rel:"noopener noreferrer",className:"hover:text-white transition-colors"},"Instagram ",CONFIG.INSTAGRAM_HANDLE)),
+            React.createElement("li",null,React.createElement("a",{href:CONFIG.TIKTOK_URL,target:"_blank",rel:"noopener noreferrer",className:"hover:text-white transition-colors"},"TikTok ",CONFIG.TIKTOK_HANDLE)),
+            React.createElement("li",null,React.createElement("button",{onClick:()=>setActiveTab("shipping"),className:"hover:text-white transition-colors"},"Envíos y contacto"))
+          )
+        )
+      ),
+      React.createElement("div",{className:"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#888] font-light border-t border-[#3a342e] gap-2",style:{paddingBottom:"env(safe-area-inset-bottom, 0px)"}},
+        React.createElement("p",null,"© ",(new Date()).getFullYear()," ",CONFIG.BUSINESS_NAME,". Todos los derechos reservados."),
+        React.createElement("p",{className:"text-center sm:text-right"},CONFIG.TAGLINE," 🌿")
+      )
+    )
+  );
+}
+function AppWrapper(){
+  return React.createElement(ErrorBoundary,null,React.createElement(App,null));
+}
+const root=ReactDOM.createRoot(document.getElementById("root"));
+root.render(React.createElement(AppWrapper,null));
+</script>
+</body>
+</html>
